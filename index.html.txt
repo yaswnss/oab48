@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#080810">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB2aWV3Qm94PSIwIDAgMTkyIDE5MiI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iNDIiIGZpbGw9IiMwZDBkMTkiLz4KPGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iNTgiIGZpbGw9InVybCgjZykiLz4KPGRlZnM+CjxyYWRpYWxHcmFkaWVudCBpZD0iZyIgY3g9IjAuNCIgY3k9IjAuNCI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZDk3ZCIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNkNGE4NDMiLz4KPC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8dGV4dCB4PSI5NiIgeT0iMTE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI1NiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMwODA4MTAiPk9BQjwvdGV4dD4KPC9zdmc+">
+
+<link rel="manifest" href='data:application/manifest+json,{"name":"OAB48","short_name":"OAB48","start_url":"https://yaswnss.github.io/oab48/","scope":"https://yaswnss.github.io/oab48/","display":"standalone","background_color":"%23080810","theme_color":"%23080810"}'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="OAB48">
+<link rel="canonical" href="https://yaswnss.github.io/oab48/">
+<title>OAB48 — Sistema de Aprovação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#080810;--bg2:#0e0e1a;--bg3:#131320;--bg4:#191928;--bg5:#1e1e30;
+--surface:#1c1c2e;--surface2:#232338;--surface3:#2a2a45;
+--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.10);--border3:rgba(255,255,255,0.16);
+--gold:#d4a843;--gold2:#f0c060;--gold3:#ffd97d;
+--gold-dim:rgba(212,168,67,0.12);--gold-glow:rgba(212,168,67,0.25);
+--accent:#4f8ef7;--accent2:#7eb3ff;--accent-dim:rgba(79,142,247,0.10);
+--green:#3ecf8e;--green-dim:rgba(62,207,142,0.10);
+--red:#f25f5c;--red-dim:rgba(242,95,92,0.10);
+--orange:#fb923c;--orange-dim:rgba(251,146,60,0.10);
+--purple:#a78bfa;--purple-dim:rgba(167,139,250,0.10);
+--cyan:#22d3ee;--cyan-dim:rgba(34,211,238,0.10);
+--text:#eeeef8;--text2:#a0a0c0;--text3:#585870;
+--font-d:'DM Serif Display',serif;--font-u:'Syne',sans-serif;--font-m:'JetBrains Mono',monospace;
+--r:12px;--r2:18px;--r3:24px;
+--st:env(safe-area-inset-top,44px);--sb:env(safe-area-inset-bottom,34px);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font-u);-webkit-font-smoothing:antialiased}
+
+/* SPLASH */
+#splash{position:fixed;inset:0;background:var(–bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:20px;transition:opacity .5s,transform .5s}
+#splash.hide{opacity:0;transform:scale(1.04);pointer-events:none}
+.sp-logo{width:88px;height:88px;background:linear-gradient(135deg,var(–gold),var(–gold2));border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:40px;box-shadow:0 0 60px var(–gold-glow),0 24px 48px rgba(0,0,0,.6);animation:logoGlow 2s ease-in-out infinite}
+@keyframes logoGlow{0%,100%{box-shadow:0 0 40px var(–gold-glow),0 24px 48px rgba(0,0,0,.6)}50%{box-shadow:0 0 100px var(–gold-glow),0 0 160px rgba(212,168,67,.1),0 24px 48px rgba(0,0,0,.6)}}
+.sp-title{font-family:var(–font-d);font-size:34px;color:var(–gold)}
+.sp-sub{font-size:11px;color:var(–text3);letter-spacing:3px;text-transform:uppercase}
+.sp-bar{width:220px;height:2px;background:var(–border);border-radius:2px;overflow:hidden;margin-top:8px}
+.sp-fill{height:100%;width:0;background:linear-gradient(90deg,var(–gold),var(–gold3));border-radius:2px;transition:width .08s}
+.sp-status{font-size:11px;color:var(–text3);font-family:var(–font-m);margin-top:4px;height:16px;text-align:center}
+
+/* APP */
+#app{display:none;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+
+/* HEADER */
+.hdr{padding:calc(var(–st) + 6px) 18px 10px;background:rgba(8,8,16,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(–border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:100}
+.hdr-logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(–gold),var(–gold2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.logo-txt{font-size:17px;font-weight:800;color:var(–text)}
+.logo-txt em{color:var(–gold);font-style:normal}
+.hdr-right{display:flex;align-items:center;gap:9px}
+.cd-pill{background:var(–gold-dim);border:1px solid rgba(212,168,67,.2);border-radius:20px;padding:4px 11px;font-size:11px;font-family:var(–font-m);color:var(–gold2);white-space:nowrap}
+.hdr-btn{width:32px;height:32px;border-radius:50%;background:var(–surface);border:1px solid var(–border);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;transition:all .18s}
+.hdr-btn:active{background:var(–surface2)}
+
+/* PAGES */
+.pages{flex:1;overflow:hidden;position:relative}
+.page{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;opacity:0;transform:translateY(14px);transition:opacity .28s ease,transform .28s ease;pointer-events:none;padding-bottom:calc(var(–sb) + 72px)}
+.page.active{opacity:1;transform:translateY(0);pointer-events:all}
+::-webkit-scrollbar{width:0}
+
+/* NAV */
+.nav{display:flex;padding:8px 6px calc(var(–sb) + 6px);background:rgba(8,8,16,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid var(–border);flex-shrink:0;gap:2px}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:7px 4px;border-radius:12px;cursor:pointer;transition:all .18s;background:transparent;border:none;color:var(–text3);position:relative}
+.ni.active{color:var(–gold);background:var(–gold-dim)}
+.ni svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ni .nl{font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+
+/* COMPONENTS */
+.ph{padding:20px 18px 10px}
+.ph-title{font-family:var(–font-d);font-size:26px}
+.ph-title em{color:var(–gold);font-style:italic}
+.ph-sub{font-size:12px;color:var(–text3);margin-top:3px}
+.card{background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:16px;transition:all .18s}
+.tap{cursor:pointer}
+.tap:active{transform:scale(.98);background:var(–surface2)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:var(–r);font-family:var(–font-u);font-weight:700;cursor:pointer;transition:all .18s}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:linear-gradient(135deg,var(–gold),var(–gold2));color:#080810;font-size:14px;padding:13px 20px}
+.btn-ghost{background:var(–bg3);border:1px solid var(–border2);color:var(–text2);font-size:13px;padding:11px 16px}
+.tag{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.4px;white-space:nowrap}
+.tg{background:var(–gold-dim);color:var(–gold)}
+.tb{background:var(–accent-dim);color:var(–accent2)}
+.tgr{background:var(–green-dim);color:var(–green)}
+.tr{background:var(–red-dim);color:var(–red)}
+.tp{background:var(–purple-dim);color:var(–purple)}
+.to{background:var(–orange-dim);color:var(–orange)}
+.pbt{height:5px;background:var(–border);border-radius:3px;overflow:hidden}
+.pbf{height:100%;border-radius:3px;transition:width .8s}
+.tabs{display:flex;gap:3px;margin:0 18px 12px;background:var(–surface);border-radius:12px;padding:4px}
+.tab{flex:1;padding:8px;border-radius:9px;text-align:center;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;color:var(–text3)}
+.tab.active{background:var(–bg4);color:var(–text)}
+.chips{display:flex;gap:7px;padding:10px 18px;overflow-x:auto;flex-shrink:0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;padding:7px 13px;background:var(–surface);border:1px solid var(–border);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap;color:var(–text2)}
+.chip.on{background:var(–gold-dim);border-color:rgba(212,168,67,.3);color:var(–gold)}
+.chip:active{transform:scale(.96)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(12px);z-index:600;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal.open{opacity:1;pointer-events:all}
+.msheet{width:100%;background:var(–bg3);border:1px solid var(–border2);border-radius:24px 24px 0 0;padding:18px 18px calc(var(–sb) + 20px);transform:translateY(100%);transition:transform .35s cubic-bezier(.34,1.56,.64,1);max-height:88vh;overflow-y:auto}
+.modal.open .msheet{transform:translateY(0)}
+.mhandle{width:36px;height:4px;background:var(–border3);border-radius:2px;margin:0 auto 16px}
+.mtitle{font-family:var(–font-d);font-size:22px;margin-bottom:14px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.au{animation:fadeUp .4s ease forwards}
+.au:nth-child(1){animation-delay:.00s}.au:nth-child(2){animation-delay:.06s}
+.au:nth-child(3){animation-delay:.12s}.au:nth-child(4){animation-delay:.18s}
+.au:nth-child(5){animation-delay:.24s}.au:nth-child(6){animation-delay:.30s}
+.au:nth-child(7){animation-delay:.36s}.au:nth-child(8){animation-delay:.42s}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.pulse{animation:pulse 1.5s infinite}
+
+/* ── HOME ── */
+.hero{margin:14px 18px;background:linear-gradient(135deg,var(–bg3),var(–bg4));border:1px solid var(–border2);border-radius:var(–r3);padding:20px;position:relative;overflow:hidden}
+.hero::before{content:’’;position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,var(–gold-dim),transparent 70%);pointer-events:none}
+.h-greet{font-size:12px;color:var(–text3);margin-bottom:3px}
+.h-name{font-family:var(–font-d);font-size:22px;margin-bottom:14px}
+.h-name em{color:var(–gold);font-style:italic}
+.rs-row{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.rs-n{font-family:var(–font-m);font-size:48px;font-weight:300;color:var(–gold);line-height:1}
+.rs-n sup{font-size:20px}
+.rs-lbl{font-size:10px;color:var(–text3);text-transform:uppercase;letter-spacing:1px}
+.rs-ok{font-size:13px;font-weight:700;color:var(–green);margin-top:2px}
+.h3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
+.h3v{font-family:var(–font-m);font-size:18px;font-weight:500}
+.h3l{font-size:10px;color:var(–text3);margin-top:1px}
+
+.cdb{margin:0 18px 14px;background:var(–gold-dim);border:1px solid rgba(212,168,67,.18);border-radius:var(–r2);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cdi .cde{font-size:10px;color:var(–text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.cdi .cdd{font-size:12px;color:var(–gold2);font-weight:600}
+.cdn{display:flex;gap:14px;align-items:center}
+.cdi2{text-align:center}
+.cdn-n{font-family:var(–font-m);font-size:22px;color:var(–gold2);font-weight:500;display:block;min-width:28px}
+.cdn-l{font-size:9px;color:var(–gold);text-transform:uppercase;letter-spacing:1px}
+.cdn-sep{font-size:18px;color:var(–gold);opacity:.4;line-height:1}
+
+.itip{margin:0 18px 14px;background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.15);border-radius:var(–r);padding:12px 14px;display:flex;align-items:center;gap:10px}
+.itig{font-size:22px;flex-shrink:0}
+.itic{flex:1}
+.iti-t{font-size:12px;font-weight:700;margin-bottom:2px}
+.iti-s{font-size:10px;color:var(–text3)}
+.iti-x{font-size:18px;color:var(–text3);cursor:pointer;padding:4px}
+
+.qg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 18px 14px}
+.qc{background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:16px;cursor:pointer;transition:all .18s;display:flex;flex-direction:column;gap:10px}
+.qc:active{transform:scale(.97);background:var(–surface2)}
+.qci{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.qct{font-size:13px;font-weight:700}
+.qcs{font-size:11px;color:var(–text3);margin-top:1px}
+
+.streak{margin:0 18px 14px;background:linear-gradient(135deg,rgba(62,207,142,.07),rgba(79,142,247,.07));border:1px solid rgba(62,207,142,.12);border-radius:var(–r);padding:12px 16px;display:flex;align-items:center;gap:12px}
+.str-n{font-family:var(–font-m);font-size:22px;color:var(–green)}
+.str-t{font-size:12px;color:var(–text3);margin-top:1px}
+
+.pls{margin:0 18px 14px}
+.sec-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sec-t{font-size:15px;font-weight:700}
+.sec-m{font-size:12px;color:var(–gold);cursor:pointer}
+.pli{background:var(–surface);border:1px solid var(–border);border-radius:var(–r);padding:13px 15px;margin-bottom:7px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s}
+.pli:active{transform:scale(.99)}
+.pck{width:22px;height:22px;border-radius:50%;border:2px solid var(–border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s}
+.pck.done{background:var(–green);border-color:var(–green);color:#080810}
+.pin{font-size:14px;font-weight:600}
+.pim{font-size:11px;color:var(–text3);margin-top:2px}
+.pid{font-family:var(–font-m);font-size:11px;color:var(–text2)}
+
+/* ── TRILHAS ── */
+.ml{display:flex;flex-direction:column;gap:7px;padding:0 18px}
+.mc{background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .18s}
+.mc:active{transform:scale(.98);background:var(–surface2)}
+.mi{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.mb{flex:1;min-width:0}
+.mn{font-size:14px;font-weight:700}
+.mpr{display:flex;align-items:center;gap:8px;margin-top:5px}
+.mbar{flex:1;height:4px;background:var(–border);border-radius:2px;overflow:hidden}
+.mbf{height:100%;border-radius:2px}
+.mpct{font-family:var(–font-m);font-size:10px;color:var(–text3);width:28px;text-align:right}
+.ms{font-size:10px;color:var(–text3);margin-top:3px}
+
+/* FLASHCARD */
+.fcdeck{margin:0 18px;background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:20px}
+.fcface{background:var(–bg4);border:1px solid var(–border2);border-radius:var(–r2);padding:28px 18px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;margin-bottom:14px;transition:all .3s;text-align:center}
+.fcface.fl{background:var(–gold-dim);border-color:rgba(212,168,67,.25)}
+.fch{font-size:10px;color:var(–text3);text-transform:uppercase;letter-spacing:1px}
+.fct{font-size:15px;font-weight:600;line-height:1.5;color:var(–text)}
+.fcbt{font-size:13px;line-height:1.7;color:var(–text2)}
+.fcbs{display:flex;gap:8px}
+.fbe{flex:1;padding:11px;border-radius:var(–r);border:none;background:var(–green-dim);color:var(–green);font-family:var(–font-u);font-size:13px;font-weight:700;cursor:pointer}
+.fbo{flex:1;padding:11px;border-radius:var(–r);border:none;background:var(–accent-dim);color:var(–accent2);font-family:var(–font-u);font-size:13px;font-weight:700;cursor:pointer}
+.fbd{flex:1;padding:11px;border-radius:var(–r);border:none;background:var(–red-dim);color:var(–red);font-family:var(–font-u);font-size:13px;font-weight:700;cursor:pointer}
+
+/* ── QBANK ── */
+.qcard{margin:0 18px 14px;background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);overflow:hidden}
+.qhdr{padding:13px 15px;border-bottom:1px solid var(–border);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.qmeta{font-size:11px;color:var(–text3);flex:1}
+.qmeta strong{color:var(–gold)}
+.qdif{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px}
+.qbody{padding:16px 15px}
+.qtxt{font-size:14px;line-height:1.65;color:var(–text)}
+.qopts{display:flex;flex-direction:column;gap:7px;margin-top:14px}
+.qopt{padding:12px 13px;background:var(–bg3);border:1.5px solid var(–border);border-radius:var(–r);display:flex;align-items:flex-start;gap:11px;cursor:pointer;transition:all .18s;font-size:13px;line-height:1.5;color:var(–text2)}
+.qopt.sel{border-color:var(–accent);background:var(–accent-dim);color:var(–text)}
+.qopt.correct{border-color:var(–green);background:var(–green-dim);color:var(–text)}
+.qopt.wrong{border-color:var(–red);background:var(–red-dim)}
+.qltr{width:24px;height:24px;border-radius:50%;background:var(–border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(–font-m);transition:all .2s}
+.qopt.correct .qltr{background:var(–green);color:#080810}
+.qopt.wrong .qltr{background:var(–red);color:#fff}
+.qopt.sel .qltr{background:var(–accent);color:#fff}
+.qfoot{padding:12px 15px;border-top:1px solid var(–border);display:flex;gap:8px}
+.qexp{margin:0 18px 14px;background:var(–bg3);border:1px solid var(–border2);border-radius:var(–r);padding:15px;display:none}
+.qexp.show{display:block;animation:fadeUp .3s ease}
+.qelbl{font-size:10px;font-weight:700;color:var(–gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}
+.qetxt{font-size:13px;line-height:1.7;color:var(–text2)}
+.qeleg{font-size:11px;color:var(–accent2);margin-top:8px;padding-top:8px;border-top:1px solid var(–border)}
+
+/* ── TUTOR ── */
+.chatw{display:flex;flex-direction:column;height:100%}
+.chatm{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}
+.msg{display:flex;gap:9px;align-items:flex-start}
+.msg.user{flex-direction:row-reverse}
+.mav{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px}
+.mav-ai{background:linear-gradient(135deg,var(–gold),var(–gold2));color:#080810}
+.mav-u{background:linear-gradient(135deg,var(–accent),var(–purple))}
+.bub{max-width:80%;padding:11px 13px;border-radius:16px;font-size:13px;line-height:1.65}
+.msg.ai .bub{background:var(–surface);border:1px solid var(–border);border-top-left-radius:4px;color:var(–text)}
+.msg.user .bub{background:linear-gradient(135deg,var(–gold),var(–gold2));color:#080810;font-weight:500;border-top-right-radius:4px}
+.bub strong{font-weight:700}
+.tdots{display:flex;gap:4px;padding:6px 0}
+.td{width:6px;height:6px;border-radius:50%;background:var(–text3);animation:td 1.2s ease-in-out infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.cia{padding:10px 14px calc(10px + 0px);border-top:1px solid var(–border);background:var(–bg);flex-shrink:0}
+.csugg{display:flex;gap:7px;overflow-x:auto;padding-bottom:9px}
+.csugg::-webkit-scrollbar{display:none}
+.csc{flex-shrink:0;padding:6px 12px;background:var(–surface);border:1px solid var(–border);border-radius:20px;font-size:11px;color:var(–text2);cursor:pointer;white-space:nowrap;transition:all .18s}
+.csc:active{background:var(–gold-dim);border-color:rgba(212,168,67,.3);color:var(–gold)}
+.crow{display:flex;gap:8px;align-items:flex-end}
+.cinp{flex:1;background:var(–surface);border:1px solid var(–border);border-radius:20px;padding:10px 15px;color:var(–text);font-family:var(–font-u);font-size:13px;outline:none;resize:none;max-height:90px;min-height:42px;transition:border .18s;line-height:1.5}
+.cinp:focus{border-color:var(–gold)}
+.cinp::placeholder{color:var(–text3)}
+.csend{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(–gold),var(–gold2));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s}
+.csend:active{transform:scale(.9)}
+.csend svg{width:16px;height:16px;stroke:#080810;fill:none;stroke-width:2.5}
+
+/* ── CRONOGRAMA ── */
+.wnav{display:flex;gap:7px;padding:10px 18px;overflow-x:auto}
+.wnav::-webkit-scrollbar{display:none}
+.dp{flex-shrink:0;padding:7px 13px;border-radius:20px;text-align:center;cursor:pointer;transition:all .18s;background:var(–surface);border:1px solid var(–border)}
+.dp.on{background:var(–gold);border-color:var(–gold)}
+.dpn{font-size:10px;font-weight:700;letter-spacing:.3px}
+.dpd{font-family:var(–font-m);font-size:17px;margin-top:2px}
+.dp.on .dpn,.dp.on .dpd{color:#080810}
+.sb{margin:0 18px 8px;background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:14px;display:flex;gap:12px;align-items:flex-start}
+.sbt{font-family:var(–font-m);font-size:10px;color:var(–text3);width:40px;flex-shrink:0;padding-top:2px;line-height:1.4}
+.sbl{width:2px;background:var(–border2);border-radius:1px;flex-shrink:0;align-self:stretch;min-height:36px}
+.sbb{flex:1}
+.sbm{font-size:14px;font-weight:700}
+.sbp{font-size:12px;color:var(–text2);margin-top:3px}
+.sbtg{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.sbst{width:26px;height:26px;border-radius:50%;border:2px solid var(–border2);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .2s}
+.sbst.done{background:var(–green);border-color:var(–green);color:#080810}
+.wsum{margin:0 18px 12px;background:var(–gold-dim);border:1px solid rgba(212,168,67,.15);border-radius:var(–r);padding:14px}
+
+/* ── SIMULADO ── */
+.simhero{margin:14px 18px;background:linear-gradient(135deg,rgba(79,142,247,.08),rgba(167,139,250,.08));border:1px solid rgba(79,142,247,.15);border-radius:var(–r2);padding:22px;text-align:center}
+.sims{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 18px}
+.ssc{background:var(–bg4);border:1px solid var(–border);border-radius:var(–r);padding:12px;text-align:center}
+.ssv{font-family:var(–font-m);font-size:20px;color:var(–accent2)}
+.ssl{font-size:10px;color:var(–text3);margin-top:2px}
+.stg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 18px 14px}
+.stgc{background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:16px;cursor:pointer;transition:all .18s;text-align:center}
+.stgc:active{transform:scale(.97)}
+.stgc.sel{border-color:var(–gold);background:var(–gold-dim)}
+.stgc .stgi{font-size:28px;margin-bottom:8px}
+.stgc .stgn{font-size:13px;font-weight:700;margin-bottom:3px}
+.stgc .stgd{font-size:11px;color:var(–text3)}
+.simtop{padding:10px 18px;border-bottom:1px solid var(–border);display:flex;align-items:center;justify-content:space-between;background:var(–bg2);flex-shrink:0}
+.simct{font-family:var(–font-m);font-size:13px;color:var(–text2)}
+.simtm{font-family:var(–font-m);font-size:18px;font-weight:500;color:var(–gold)}
+.simtm.warn{color:var(–red);animation:pulse 1s infinite}
+.simpb{height:3px;background:var(–border)}
+.simpbf{height:100%;background:linear-gradient(90deg,var(–gold),var(–gold2));transition:width .3s}
+.srh{background:linear-gradient(135deg,var(–bg3),var(–bg4));border:1px solid var(–border2);border-radius:var(–r3);padding:24px;text-align:center}
+.srg{font-family:var(–font-d);font-size:56px;line-height:1}
+.srs{font-size:15px;font-weight:700;margin-top:6px}
+.srok{color:var(–green)}.srno{color:var(–red)}
+
+/* ── DASHBOARD ── */
+.pred{margin:14px 18px;background:linear-gradient(135deg,var(–gold-dim),rgba(62,207,142,.06));border:1px solid rgba(212,168,67,.18);border-radius:var(–r2);padding:22px;text-align:center}
+.prel{font-size:10px;color:var(–text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.prn{font-family:var(–font-d);font-size:54px;color:var(–gold);line-height:1}
+.prs{font-size:12px;color:var(–text2);margin-top:7px}
+.prb{display:inline-block;margin-top:10px;padding:5px 16px;background:var(–green-dim);border:1px solid rgba(62,207,142,.25);border-radius:20px;font-size:11px;font-weight:700;color:var(–green)}
+.stg2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 18px 14px}
+.stgcard{background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:15px}
+.stcl{font-size:10px;color:var(–text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px}
+.stcv{font-family:var(–font-m);font-size:28px;font-weight:300}
+.stcv span{font-size:14px;color:var(–text3)}
+.stct{font-size:11px;margin-top:4px}
+.tup{color:var(–green)}.tdn{color:var(–red)}
+.rads{padding:0 18px;margin-bottom:14px}
+.radt{font-size:14px;font-weight:700;margin-bottom:12px}
+.radr{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.radl{font-size:11px;color:var(–text2);width:88px;flex-shrink:0}
+.radb{flex:1;height:7px;background:var(–border);border-radius:4px;overflow:hidden}
+.radf{height:100%;border-radius:4px}
+.radv{font-family:var(–font-m);font-size:10px;color:var(–text3);width:28px;text-align:right}
+.hms{padding:0 18px;margin-bottom:14px}
+.hmt{font-size:14px;font-weight:700;margin-bottom:10px}
+.hmlb{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px}
+.hmlbl{font-size:9px;color:var(–text3);text-align:center}
+.hmg{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.hmc{aspect-ratio:1;border-radius:3px;background:var(–border)}
+.hmc.l1{background:rgba(212,168,67,.18)}.hmc.l2{background:rgba(212,168,67,.38)}
+.hmc.l3{background:rgba(212,168,67,.62)}.hmc.l4{background:var(–gold)}
+.insc{margin:0 18px 14px;background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:16px}
+.inst{font-size:13px;font-weight:700;color:var(–gold);margin-bottom:10px}
+.ini{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(–border)}
+.ini:last-child{border-bottom:none}
+.inix{font-size:18px;flex-shrink:0}
+.init{font-size:12px;color:var(–text2);flex:1;line-height:1.5}
+.inia{font-size:11px;color:var(–gold);cursor:pointer;flex-shrink:0}
+
+/* ── RETA FINAL ── */
+.rfh{margin:14px 18px;background:linear-gradient(135deg,rgba(242,95,92,.08),rgba(212,168,67,.08));border:1px solid rgba(242,95,92,.2);border-radius:var(–r2);padding:20px}
+.rft{font-family:var(–font-d);font-size:22px;margin-bottom:4px}
+.rft em{color:var(–red);font-style:italic}
+.rfst{font-size:12px;color:var(–text3);margin-bottom:14px}
+.rfpl{display:flex;flex-direction:column;gap:8px}
+.rfp{background:var(–bg4);border:1px solid var(–border);border-radius:var(–r);padding:13px 15px;display:flex;align-items:center;gap:12px}
+.rfpn{width:32px;height:32px;border-radius:50%;background:var(–gold-dim);border:1px solid rgba(212,168,67,.25);display:flex;align-items:center;justify-content:center;font-family:var(–font-m);font-size:14px;color:var(–gold);flex-shrink:0}
+.rfpb{flex:1}
+.rfpt{font-size:13px;font-weight:700}
+.rfpd{font-size:11px;color:var(–text3);margin-top:2px}
+.rfdy{font-family:var(–font-m);font-size:11px;color:var(–gold);flex-shrink:0}
+.rfday{margin:0 18px 8px;background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:15px}
+.rfdd{font-size:11px;color:var(–text3);font-family:var(–font-m);margin-bottom:4px}
+.rfdt{font-size:14px;font-weight:700;margin-bottom:8px}
+.rfdi{display:flex;flex-direction:column;gap:5px}
+.rfdit{display:flex;align-items:center;gap:8px;font-size:12px;color:var(–text2)}
+.rfdot{width:6px;height:6px;border-radius:50%;background:var(–gold);flex-shrink:0}
+
+/* ── PEÇAS ── */
+.pag{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 18px 14px}
+.pagc{background:var(–surface);border:1px solid var(–border);border-radius:var(–r2);padding:16px;cursor:pointer;transition:all .18s}
+.pagc:active{transform:scale(.97)}
+.pagi{font-size:24px;margin-bottom:8px}
+.pagn{font-size:13px;font-weight:700;margin-bottom:3px}
+.pagq{font-size:11px;color:var(–text3)}
+.pecal{margin:0 18px;display:flex;flex-direction:column;gap:7px}
+.peci{background:var(–surface);border:1px solid var(–border);border-radius:var(–r);padding:13px 15px;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:12px}
+.peci:active{transform:scale(.98)}
+.pecia{color:var(–gold);font-size:16px}
+
+/* ── PDF ── */
+.upz{margin:0 18px 14px;background:var(–surface);border:2px dashed var(–border2);border-radius:var(–r2);padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s}
+.upz:hover,.upz.drag{border-color:var(–gold);background:var(–gold-dim)}
+.uzi{font-size:40px;margin-bottom:10px}
+.uzt{font-size:15px;font-weight:700;margin-bottom:4px}
+.uzs{font-size:12px;color:var(–text3)}
+.pdfl{margin:0 18px;display:flex;flex-direction:column;gap:7px}
+.pdfi{background:var(–surface);border:1px solid var(–border);border-radius:var(–r);padding:13px 15px;display:flex;align-items:center;gap:12px}
+.pdfic{font-size:24px;flex-shrink:0}
+.pdfb{flex:1;min-width:0}
+.pdfn{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdfm{font-size:11px;color:var(–text3);margin-top:2px}
+.pdfas{display:flex;gap:6px}
+.pdfab{padding:6px 10px;border-radius:20px;border:1px solid var(–border);background:transparent;color:var(–text2);font-size:11px;font-weight:600;cursor:pointer;transition:all .18s}
+.pdfab:active{background:var(–gold-dim);border-color:var(–gold);color:var(–gold)}
+
+/* ── BIBLIOTECA ── */
+.bks{margin:0 18px 14px}
+.bkst{font-size:13px;font-weight:700;color:var(–gold);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.bkc{background:var(–surface);border:1px solid var(–border);border-radius:var(–r);padding:13px 15px;margin-bottom:7px;display:flex;gap:12px;align-items:flex-start}
+.bksp{width:36px;border-radius:4px;padding:6px 4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;min-height:52px}
+.bkb{flex:1}
+.bkt{font-size:13px;font-weight:700;margin-bottom:2px}
+.bka{font-size:11px;color:var(–text3)}
+.bkts{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.bkst2{font-size:11px;color:var(–gold);margin-top:4px}
+</style>
+
+</head>
+<body>
+
+<!-- SPLASH -->
+
+<div id="splash">
+  <div class="sp-logo">⚖</div>
+  <div style="text-align:center">
+    <div class="sp-title">OAB 48</div>
+    <div class="sp-sub">Sistema de Aprovação</div>
+  </div>
+  <div style="width:220px">
+    <div class="sp-bar"><div class="sp-fill" id="spFill"></div></div>
+    <div class="sp-status" id="spSt"></div>
+  </div>
+</div>
+
+<!-- APP -->
+
+<div id="app">
+
+<header class="hdr">
+  <div class="hdr-logo">
+    <div class="logo-mark">⚖</div>
+    <div class="logo-txt">OAB<em>48</em></div>
+  </div>
+  <div class="hdr-right">
+    <div class="cd-pill" id="hdrCd">— dias</div>
+    <div class="hdr-btn" onclick="openModal('settingsModal')">⚙</div>
+  </div>
+</header>
+
+<div class="pages">
+
+<!-- HOME -->
+
+<div class="page active" id="pg-home">
+  <div class="hero au">
+    <div class="h-greet" id="hGrt">Bom dia 👋</div>
+    <div class="h-name">Pronto para <em>dominar</em> o dia?</div>
+    <div class="rs-row">
+      <div class="rs-n" id="rsNum">73<sup>%</sup></div>
+      <div>
+        <div class="rs-lbl">Readiness Score</div>
+        <div class="rs-ok">✓ No caminho certo</div>
+      </div>
+    </div>
+    <div class="pbt"><div class="pbf" id="heroBar" style="width:73%;background:linear-gradient(90deg,var(--gold),var(--gold2))"></div></div>
+    <div class="h3">
+      <div><div class="h3v" style="color:var(--accent2)" id="hQ">847</div><div class="h3l">Questões</div></div>
+      <div><div class="h3v" style="color:var(--green)" id="hA">72%</div><div class="h3l">Acertos</div></div>
+      <div><div class="h3v" style="color:var(--gold)" id="hH">156h</div><div class="h3l">Horas</div></div>
+    </div>
+  </div>
+
+  <div class="cdb au">
+    <div class="cdi">
+      <div class="cde">1ª Fase OAB 48</div>
+      <div class="cdd">20 de dezembro de 2026</div>
+    </div>
+    <div class="cdn">
+      <div class="cdi2"><span class="cdn-n" id="cdD">—</span><span class="cdn-l">dias</span></div>
+      <div class="cdn-sep">:</div>
+      <div class="cdi2"><span class="cdn-n" id="cdH">—</span><span class="cdn-l">hrs</span></div>
+      <div class="cdn-sep">:</div>
+      <div class="cdi2"><span class="cdn-n" id="cdM">—</span><span class="cdn-l">min</span></div>
+    </div>
+  </div>
+
+  <div class="itip au" id="iTip">
+    <div class="itig">📲</div>
+    <div class="itic">
+      <div class="iti-t">Instalar no iPhone</div>
+      <div class="iti-s">Safari → Compartilhar ↑ → "Adicionar à Tela Inicial"</div>
+    </div>
+    <div class="iti-x" onclick="closeInstall()">✕</div>
+  </div>
+
+  <div class="qg au">
+    <div class="qc" onclick="nav('tutor')"><div class="qci" style="background:var(--gold-dim)">🤖</div><div><div class="qct">Tutor IA</div><div class="qcs">Dúvidas agora</div></div></div>
+    <div class="qc" onclick="nav('qbank')"><div class="qci" style="background:var(--accent-dim)">🎯</div><div><div class="qct">Questões FGV</div><div class="qcs">Banco adaptativo</div></div></div>
+    <div class="qc" onclick="nav('simulado')"><div class="qci" style="background:var(--purple-dim)">📝</div><div><div class="qct">Simulado</div><div class="qcs">80q · 5h · Completo</div></div></div>
+    <div class="qc" onclick="nav('reta-final')"><div class="qci" style="background:var(--red-dim)">🔥</div><div><div class="qct">Reta Final</div><div class="qcs">60 dias intensivos</div></div></div>
+  </div>
+
+  <div class="streak au">
+    <div style="font-size:26px">🔥</div>
+    <div style="flex:1"><div class="str-n" id="strN">14 dias</div><div class="str-t">Sequência de estudos — não quebre!</div></div>
+    <div style="font-size:22px">🏆</div>
+  </div>
+
+  <div class="pls au">
+    <div class="sec-hdr">
+      <div class="sec-t">📋 Plano de Hoje</div>
+      <div class="sec-m" onclick="nav('cronograma')">Ver tudo →</div>
+    </div>
+    <div id="todayPlan"></div>
+  </div>
+
+  <div style="margin:0 18px 14px" class="au">
+    <div class="sec-hdr">
+      <div class="sec-t">📊 Progresso Rápido</div>
+      <div class="sec-m" onclick="nav('dashboard')">Dashboard →</div>
+    </div>
+    <div id="homeRad"></div>
+  </div>
+</div>
+
+<!-- TRILHAS -->
+
+<div class="page" id="pg-trilhas">
+  <div class="ph"><div class="ph-title">Trilhas de <em>Estudo</em></div><div class="ph-sub">16 matérias · Conteúdo + IA integrada</div></div>
+  <div class="tabs">
+    <div class="tab active" onclick="swTab(this,'t1f')">1ª Fase</div>
+    <div class="tab" onclick="swTab(this,'t2f')">2ª Fase</div>
+    <div class="tab" onclick="swTab(this,'tfc')">Flashcards</div>
+  </div>
+  <div id="t1f"><div class="ml" id="matList"></div></div>
+  <div id="t2f" style="display:none;padding:0 18px"><div id="seg2f"></div></div>
+  <div id="tfc" style="display:none;padding:0 18px"><div id="fcArea"></div></div>
+</div>
+
+<!-- QBANK -->
+
+<div class="page" id="pg-qbank">
+  <div class="ph"><div class="ph-title">Banco de <em>Questões</em></div><div class="ph-sub">FGV · Gabarito comentado · IA</div></div>
+  <div class="chips" id="qChips"></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 18px 14px">
+    <div class="card" style="text-align:center;padding:12px"><div style="font-family:var(--font-m);font-size:20px;color:var(--green)" id="qAc">72%</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Acertos</div></div>
+    <div class="card" style="text-align:center;padding:12px"><div style="font-family:var(--font-m);font-size:20px;color:var(--accent2)" id="qTo">847</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Feitas</div></div>
+    <div class="card" style="text-align:center;padding:12px"><div style="font-family:var(--font-m);font-size:20px;color:var(--gold)" id="qSt">14</div><div style="font-size:10px;color:var(--text3);margin-top:2px">Sequência</div></div>
+  </div>
+  <div id="qArea"></div>
+</div>
+
+<!-- TUTOR -->
+
+<div class="page" id="pg-tutor" style="padding-bottom:0;display:flex;flex-direction:column">
+  <div class="ph" style="padding-bottom:6px;flex-shrink:0">
+    <div class="ph-title">Tutor <em>IA</em></div>
+    <div class="ph-sub">Powered by Claude · Especialista OAB 48</div>
+  </div>
+  <div class="chatm" id="chatMsgs"></div>
+  <div class="cia" style="flex-shrink:0">
+    <div class="csugg" id="chatSugg"></div>
+    <div class="crow">
+      <textarea class="cinp" id="chatInp" placeholder="Pergunte qualquer coisa sobre Direito..." rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}"
+        oninput="autoResize(this)"></textarea>
+      <button class="csend" onclick="sendChat()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CRONOGRAMA -->
+
+<div class="page" id="pg-cronograma">
+  <div class="ph"><div class="ph-title">Plano de <em>Estudos</em></div><div class="ph-sub" id="schedSub">Adaptativo · — dias para a prova</div></div>
+  <div class="wnav" id="weekNav"></div>
+  <div class="wsum">
+    <div style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:8px">📊 Meta da Semana</div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;color:var(--text2)">Horas estudadas</span><span style="font-family:var(--font-m);font-size:12px">21h / 28h</span></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:12px;color:var(--text2)">Questões feitas</span><span style="font-family:var(--font-m);font-size:12px">210 / 300</span></div>
+    <div class="pbt"><div class="pbf" style="width:75%;background:var(--gold)"></div></div>
+  </div>
+  <div id="schedBlocks"></div>
+</div>
+
+<!-- SIMULADO -->
+
+<div class="page" id="pg-simulado">
+  <div id="simHome">
+    <div class="ph"><div class="ph-title">Simulado <em>Completo</em></div><div class="ph-sub">Condições reais de prova OAB</div></div>
+    <div class="simhero">
+      <div style="font-family:var(--font-d);font-size:24px;margin-bottom:6px">🎯 OAB 48 — 1ª Fase</div>
+      <div style="font-size:13px;color:var(--text3);margin-bottom:14px">80 questões · 5 horas · Todas as matérias</div>
+      <div class="sims">
+        <div class="ssc"><div class="ssv">3</div><div class="ssl">Realizados</div></div>
+        <div class="ssc"><div class="ssv">74%</div><div class="ssl">Melhor</div></div>
+        <div class="ssc"><div class="ssv">68%</div><div class="ssl">Média</div></div>
+      </div>
+      <button class="btn btn-gold" style="width:100%" onclick="startSim('completo')">▶ Iniciar Simulado Completo</button>
+    </div>
+    <div style="padding:0 18px;margin-bottom:10px"><div class="sec-t" style="font-size:14px">Outros modos</div></div>
+    <div class="stg">
+      <div class="stgc" onclick="startSim('rapido')"><div class="stgi">⚡</div><div class="stgn">Rápido</div><div class="stgd">20 questões · 1h</div></div>
+      <div class="stgc" onclick="startSim('materia')"><div class="stgi">📚</div><div class="stgn">Por Matéria</div><div class="stgd">30 questões · 1.5h</div></div>
+      <div class="stgc" onclick="startSim('erros')"><div class="stgi">🔄</div><div class="stgn">Revisar Erros</div><div class="stgd">Banco de erros</div></div>
+      <div class="stgc" onclick="startSim('fgv')"><div class="stgi">🏛</div><div class="stgn">Prova FGV</div><div class="stgd">Exame anterior</div></div>
+    </div>
+    <div style="padding:0 18px;margin-bottom:10px"><div class="sec-t" style="font-size:14px">Histórico</div></div>
+    <div id="simHist" style="padding:0 18px;display:flex;flex-direction:column;gap:7px"></div>
+  </div>
+  <div id="simRun" style="display:none;flex-direction:column;position:absolute;inset:0;overflow:hidden;background:var(--bg)">
+    <div class="simtop">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="simct" id="simCt">1/80</div>
+        <div style="font-size:11px;color:var(--text3)" id="simMat">–</div>
+      </div>
+      <div class="simtm" id="simTm">5:00:00</div>
+      <button class="btn btn-ghost" style="font-size:12px;padding:7px 12px" onclick="pauseSim()">⏸ Sair</button>
+    </div>
+    <div class="simpb"><div class="simpbf" id="simProg" style="width:0%"></div></div>
+    <div style="flex:1;overflow-y:auto;padding:14px" id="simQArea"></div>
+    <div style="padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-shrink:0">
+      <button class="btn btn-ghost" style="flex:1" onclick="simPrev()">← Anterior</button>
+      <button class="btn btn-gold" style="flex:2" id="simNxt" onclick="simNext()">Próxima →</button>
+    </div>
+  </div>
+  <div id="simRes" style="display:none;overflow-y:auto;padding:0 0 20px">
+    <div class="ph"><div class="ph-title">Resultado do <em>Simulado</em></div></div>
+    <div style="padding:0 18px;display:flex;flex-direction:column;gap:12px" id="simResContent"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+
+<div class="page" id="pg-dashboard">
+  <div class="ph"><div class="ph-title">Meu <em>Desempenho</em></div><div class="ph-sub">Análise em tempo real</div></div>
+  <div class="pred">
+    <div class="prel">Probabilidade de Aprovação</div>
+    <div class="prn">78<small style="font-size:24px">%</small></div>
+    <div class="prs">Baseado no seu progresso e histórico FGV</div>
+    <div class="prb">✓ Aprovação provável</div>
+  </div>
+  <div class="stg2">
+    <div class="stgcard"><div class="stcl">Horas Totais</div><div class="stcv" id="dH">156<span>h</span></div><div class="stct tup">↑ +12h esta semana</div></div>
+    <div class="stgcard"><div class="stcl">Taxa de Acerto</div><div class="stcv" id="dA">72<span>%</span></div><div class="stct tup">↑ +3% vs semana</div></div>
+    <div class="stgcard"><div class="stcl">Questões Feitas</div><div class="stcv" id="dQ">847</div><div class="stct tup">↑ +64 hoje</div></div>
+    <div class="stgcard"><div class="stcl">Sequência</div><div class="stcv">14<span>d</span></div><div class="stct tup">🔥 Recorde!</div></div>
+  </div>
+  <div class="rads"><div class="radt">📊 Desempenho por Matéria</div><div id="dashRad"></div></div>
+  <div class="hms">
+    <div class="hmt">📅 Heatmap de Estudos</div>
+    <div class="hmlb"><div class="hmlbl">S</div><div class="hmlbl">T</div><div class="hmlbl">Q</div><div class="hmlbl">Q</div><div class="hmlbl">S</div><div class="hmlbl">S</div><div class="hmlbl">D</div></div>
+    <div class="hmg" id="heatmap"></div>
+  </div>
+  <div class="insc">
+    <div class="inst">💡 Insights do Coach</div>
+    <div id="insights"></div>
+  </div>
+</div>
+
+<!-- RETA FINAL -->
+
+<div class="page" id="pg-reta-final">
+  <div class="ph"><div class="ph-title">Reta <em>Final</em></div><div class="ph-sub">Plano intensivo 60 dias até 20/12/2026</div></div>
+  <div class="rfh">
+    <div class="rft">🔥 60 dias para a <em>aprovação</em></div>
+    <div class="rfst">Cronograma intensivo personalizado</div>
+    <div class="rfpl">
+      <div class="rfp"><div class="rfpn">1</div><div class="rfpb"><div class="rfpt">Revisão Geral</div><div class="rfpd">Todas as 16 matérias em ciclos</div></div><div class="rfdy">Dias 1–20</div></div>
+      <div class="rfp"><div class="rfpn">2</div><div class="rfpb"><div class="rfpt">Simulados Diários</div><div class="rfpd">1 simulado por dia + análise IA</div></div><div class="rfdy">Dias 21–40</div></div>
+      <div class="rfp"><div class="rfpn">3</div><div class="rfpb"><div class="rfpt">Pontos Fracos</div><div class="rfpd">Foco nos temas de menor acerto</div></div><div class="rfdy">Dias 41–55</div></div>
+      <div class="rfp"><div class="rfpn">4</div><div class="rfpb"><div class="rfpt">Véspera</div><div class="rfpd">Revisão final + descanso estratégico</div></div><div class="rfdy">Dias 56–60</div></div>
+    </div>
+  </div>
+  <div style="padding:0 18px;margin-bottom:10px"><div class="sec-t" style="font-size:14px">📅 Próximos 7 dias</div></div>
+  <div id="rfDays"></div>
+  <div style="padding:0 18px;margin-top:6px">
+    <button class="btn btn-gold" style="width:100%" onclick="askAI('Crie um cronograma personalizado de reta final para o OAB 48. Considere que faltam menos de 60 dias para a prova em 20/12/2026. Dê um plano dia a dia detalhado com matérias, horários e estratégias para maximizar os pontos.')">🤖 IA cria meu plano personalizado</button>
+  </div>
+</div>
+
+<!-- PEÇAS -->
+
+<div class="page" id="pg-pecas">
+  <div class="ph"><div class="ph-title">Peças <em>Processuais</em></div><div class="ph-sub">2ª Fase · Modelos + Correção IA</div></div>
+  <div class="tabs">
+    <div class="tab active" onclick="swTab(this,'tpa')">Áreas</div>
+    <div class="tab" onclick="swTab(this,'tpt')">Treino IA</div>
+    <div class="tab" onclick="swTab(this,'tpm')">Modelos</div>
+  </div>
+  <div id="tpa"><div class="pag" id="pecaGrid"></div></div>
+  <div id="tpt" style="display:none;padding:0 18px">
+    <div class="card" style="margin-bottom:12px;padding:18px">
+      <div style="font-size:14px;font-weight:700;margin-bottom:8px">✍️ Treino de Peça com IA</div>
+      <div style="font-size:12px;color:var(--text3);margin-bottom:14px">Cole sua peça abaixo. O Tutor IA corrige como o espelho da FGV.</div>
+      <textarea id="pecaInp" style="width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:12px;color:var(--text);font-family:var(--font-u);font-size:13px;line-height:1.6;min-height:180px;resize:vertical;outline:none" placeholder="Cole sua peça processual aqui..."></textarea>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <select id="pecaSel" style="flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:10px;color:var(--text);font-family:var(--font-u);font-size:13px;outline:none">
+          <option>Constitucional</option><option>Civil</option><option>Penal</option>
+          <option>Trabalhista</option><option>Administrativo</option><option>Empresarial</option><option>Tributário</option>
+        </select>
+        <button class="btn btn-gold" style="flex:1" onclick="corrigirPeca()">🤖 Corrigir</button>
+      </div>
+    </div>
+    <div id="pecaRes" style="display:none"></div>
+  </div>
+  <div id="tpm" style="display:none;padding:0 18px"><div id="pecaMod"></div></div>
+</div>
+
+<!-- PDF -->
+
+<div class="page" id="pg-pdf">
+  <div class="ph"><div class="ph-title">Meus <em>Materiais</em></div><div class="ph-sub">Upload + IA analisa seus PDFs</div></div>
+  <div class="upz" onclick="document.getElementById('pdfInp').click()" id="upZone">
+    <div class="uzi">📄</div>
+    <div class="uzt">Adicionar Material</div>
+    <div class="uzs">Toque para selecionar PDF, imagem ou texto</div>
+  </div>
+  <input type="file" id="pdfInp" accept=".pdf,.txt,.docx,image/*" multiple onchange="handleUpload(event)" style="display:none">
+  <div style="padding:0 18px;margin-bottom:10px"><div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px">Minha Biblioteca</div></div>
+  <div class="pdfl" id="pdfList"></div>
+</div>
+
+<!-- BIBLIOTECA -->
+
+<div class="page" id="pg-biblioteca">
+  <div class="ph"><div class="ph-title">Biblioteca <em>Jurídica</em></div><div class="ph-sub">Melhores livros · Curadoria estratégica</div></div>
+  <div class="chips" id="bibChips"></div>
+  <div id="bibContent"></div>
+</div>
+
+</div><!-- /pages -->
+
+<nav class="nav">
+  <button class="ni active" onclick="nav('home',this)" data-p="home">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span class="nl">Início</span>
+  </button>
+  <button class="ni" onclick="nav('trilhas',this)" data-p="trilhas">
+    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    <span class="nl">Trilhas</span>
+  </button>
+  <button class="ni" onclick="nav('qbank',this)" data-p="qbank">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span class="nl">Questões</span>
+  </button>
+  <button class="ni" onclick="nav('tutor',this)" data-p="tutor">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <span class="nl">Tutor IA</span>
+  </button>
+  <button class="ni" onclick="nav('simulado',this)" data-p="simulado">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <span class="nl">Simulado</span>
+  </button>
+  <button class="ni" onclick="openModal('moreModal')" data-p="more">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+    <span class="nl">Mais</span>
+  </button>
+</nav>
+</div><!-- /app -->
+
+<!-- MODAL MAIS -->
+
+<div class="modal" id="moreModal">
+  <div class="msheet">
+    <div class="mhandle"></div>
+    <div class="mtitle">Mais módulos</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="card tap" onclick="nav('cronograma');closeModal('moreModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:22px">📅</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Cronograma</div><div style="font-size:12px;color:var(--text3)">Plano diário e semanal</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="nav('dashboard');closeModal('moreModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:22px">📊</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Dashboard</div><div style="font-size:12px;color:var(--text3)">Análise de desempenho</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="nav('reta-final');closeModal('moreModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:22px">🔥</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Reta Final</div><div style="font-size:12px;color:var(--text3)">60 dias intensivos</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="nav('pecas');closeModal('moreModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:22px">✍️</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Peças Processuais</div><div style="font-size:12px;color:var(--text3)">2ª Fase com correção IA</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="nav('pdf');closeModal('moreModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:22px">📄</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Meus Materiais</div><div style="font-size:12px;color:var(--text3)">Upload + IA analisa seus PDFs</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="nav('biblioteca');closeModal('moreModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:22px">📖</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Biblioteca</div><div style="font-size:12px;color:var(--text3)">Melhores livros por matéria</div></div><div style="color:var(--gold)">→</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MATÉRIA -->
+
+<div class="modal" id="matModal">
+  <div class="msheet"><div class="mhandle"></div><div id="matMC"></div></div>
+</div>
+
+<!-- MODAL SETTINGS -->
+
+<div class="modal" id="settingsModal">
+  <div class="msheet">
+    <div class="mhandle"></div>
+    <div class="mtitle">⚙ Configurações</div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Seu nome</div>
+        <input id="inpNome" type="text" placeholder="Ex: João Silva" style="width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:11px 14px;color:var(--text);font-family:var(--font-u);font-size:13px;outline:none">
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">API Key do Claude (Tutor IA)</div>
+        <input id="inpKey" type="password" placeholder="sk-ant-..." style="width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:11px 14px;color:var(--text);font-family:var(--font-m);font-size:12px;outline:none">
+        <div style="font-size:11px;color:var(--text3);margin-top:5px">Obtenha grátis em <strong>anthropic.com/api</strong> · Salvo só neste dispositivo</div>
+      </div>
+      <button class="btn btn-gold" style="width:100%" onclick="saveSettings()">✓ Salvar</button>
+      <div style="font-size:11px;color:var(--text3);text-align:center">OAB48 v2.0 · Dados salvos localmente · 100% privado</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PDF -->
+
+<div class="modal" id="pdfModal">
+  <div class="msheet"><div class="mhandle"></div><div id="pdfMC"></div></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════
+   DATA
+═══════════════════════════════════════ */
+const MAT=[
+  {id:'etica',n:'Ética Profissional',ic:'⚖️',cor:'#d4a843',pct:85,qs:890,peso:'Altíssima',hot:true,ex:'~10 questões'},
+  {id:'constitucional',n:'Constitucional',ic:'📜',cor:'#4f8ef7',pct:62,qs:2340,peso:'Altíssima',hot:true,ex:'~10 questões'},
+  {id:'civil',n:'Direito Civil',ic:'🏛️',cor:'#a78bfa',pct:45,qs:1890,peso:'Altíssima',hot:true,ex:'~11 questões'},
+  {id:'proc-civil',n:'Processo Civil',ic:'⚙️',cor:'#3ecf8e',pct:38,qs:1560,peso:'Alta',hot:false,ex:'~8 questões'},
+  {id:'penal',n:'Direito Penal',ic:'🔒',cor:'#f25f5c',pct:55,qs:1200,peso:'Alta',hot:true,ex:'~9 questões'},
+  {id:'proc-penal',n:'Processo Penal',ic:'🔍',cor:'#fb923c',pct:30,qs:980,peso:'Média',hot:false,ex:'~7 questões'},
+  {id:'trabalho',n:'Dir. do Trabalho',ic:'💼',cor:'#22d3ee',pct:42,qs:1100,peso:'Alta',hot:true,ex:'~7 questões'},
+  {id:'proc-trab',n:'Proc. Trabalho',ic:'⚖',cor:'#f97316',pct:22,qs:430,peso:'Média',hot:false,ex:'~3 questões'},
+  {id:'empresarial',n:'Empresarial',ic:'🏢',cor:'#a3e635',pct:28,qs:870,peso:'Alta',hot:true,ex:'~7 questões'},
+  {id:'tributario',n:'Tributário',ic:'💰',cor:'#fbbf24',pct:25,qs:760,peso:'Alta',hot:false,ex:'~6 questões'},
+  {id:'administrativo',n:'Administrativo',ic:'🏛',cor:'#e879f9',pct:35,qs:920,peso:'Média',hot:false,ex:'~5 questões'},
+  {id:'consumidor',n:'Consumidor',ic:'🛒',cor:'#34d399',pct:50,qs:480,peso:'Média',hot:false,ex:'~4 questões'},
+  {id:'humanos',n:'Dir. Humanos',ic:'🌍',cor:'#60a5fa',pct:60,qs:520,peso:'Média',hot:false,ex:'~4 questões'},
+  {id:'ambiental',n:'Ambiental',ic:'🌿',cor:'#4ade80',pct:40,qs:310,peso:'Baixa',hot:false,ex:'~2 questões'},
+  {id:'eca',n:'ECA',ic:'👶',cor:'#f472b6',pct:55,qs:280,peso:'Baixa',hot:false,ex:'~2 questões'},
+  {id:'filosofia',n:'Filosofia do Dir.',ic:'🤔',cor:'#818cf8',pct:30,qs:200,peso:'Baixa',hot:false,ex:'~2 questões'},
+];
+
+const QS=[
+  {id:1,mat:'Ética',tema:'Sigilo Profissional',ex:'OAB 42',dif:'Médio',
+   txt:'Caio, advogado, patrocina a defesa de Mévio em processo criminal. Em conversa reservada, Mévio confessa ter praticado outros crimes não relacionados. Diante disso, Caio:',
+   opts:['Poderá revelar os crimes, pois tem dever de colaborar com a Justiça.','Deverá revelar ao MP em razão do princípio da lealdade processual.','Não poderá revelar o conteúdo da conversa, protegido pelo sigilo profissional.','Poderá revelar se o juiz da causa solicitar tais informações.'],
+   gab:2,leg:'Art. 34, VII e art. 7º, XIX EOAB; Art. 25 CED',
+   exp:'O sigilo profissional é dever e direito do advogado (art. 34, VII EOAB). A confissão feita em conversa reservada está INTEGRALMENTE protegida pelo sigilo, mesmo tratando-se de outros crimes. A única exceção é a autodefesa do próprio advogado quando acusado pelo cliente.'},
+  {id:2,mat:'Ética',tema:'Honorários',ex:'OAB 44',dif:'Médio',
+   txt:'Maria contrata João por 20% da condenação. A sentença condena a empresa em R$100.000 e fixa honorários de sucumbência de R$10.000. Sobre os honorários de sucumbência:',
+   opts:['Pertencem ao cliente, devendo ser abatidos dos honorários convencionais.','Pertencem ao advogado, mas o cliente pode transacionar livremente sobre eles.','Pertencem ao advogado e o cliente não pode transacionar sem sua anuência.','Pertencem ao cliente, que pode repassá-los ao advogado como pagamento.'],
+   gab:2,leg:'Art. 24, §§1º e 4º EOAB',
+   exp:'Os honorários de sucumbência pertencem ao ADVOGADO (art. 24, §1º EOAB). O cliente não pode transacionar, renunciar ou compensar esses honorários sem anuência expressa do causídico (§4º). São direito autônomo do advogado, não do cliente.'},
+  {id:3,mat:'Constitucional',tema:'Direitos Fundamentais',ex:'OAB 45',dif:'Fácil',
+   txt:'Sobre os direitos e garantias fundamentais previstos na CF/88, assinale a alternativa correta.',
+   opts:['O rol dos direitos fundamentais é taxativo (numerus clausus), não admitindo direitos implícitos.','As normas definidoras dos direitos e garantias fundamentais têm aplicação imediata.','Os direitos fundamentais vinculam apenas o Poder Público, sem efeitos nas relações entre particulares.','Tratados internacionais de direitos humanos sempre têm status de emenda constitucional.'],
+   gab:1,leg:'Art. 5º, §§1º, 2º e 3º CF/88',
+   exp:'O art. 5º, §1º CF consagra a aplicabilidade IMEDIATA das normas de direitos fundamentais. O rol é aberto (§2º). A eficácia horizontal vincula também particulares (STF). Tratados têm status de EC apenas quando aprovados pelo quórum especial do §3º.'},
+  {id:4,mat:'Civil',tema:'Responsabilidade Civil',ex:'OAB 46',dif:'Médio',
+   txt:'Empresa de energia elétrica causa dano a consumidor por falha no serviço. A empresa alega que não houve culpa. Sobre a responsabilidade civil:',
+   opts:['É subjetiva, dependendo da comprovação de culpa da empresa.','É objetiva, bastando a comprovação do dano e do nexo causal com a atividade.','É objetiva apenas se prevista em lei específica para o setor elétrico.','É subjetiva, pois o CC não prevê responsabilidade objetiva para concessionárias.'],
+   gab:1,leg:'Art. 927, parágrafo único CC; Art. 14 CDC',
+   exp:'A atividade de distribuição de energia elétrica implica risco especial (art. 927, §único CC — responsabilidade objetiva pelo risco). Basta comprovar dano e nexo causal. Excludentes: caso fortuito/força maior, culpa exclusiva da vítima, fato de terceiro.'},
+  {id:5,mat:'Penal',tema:'Excludentes de Ilicitude',ex:'OAB 46',dif:'Médio',
+   txt:'Roberto encontra ladrão em sua residência. O invasor o ameaça com faca. Roberto atira e o mata. Sobre a conduta de Roberto:',
+   opts:['Praticou homicídio doloso, pois agiu com intenção de matar.','Agiu em legítima defesa, excluindo a ilicitude da conduta.','Agiu em estado de necessidade, pois estava em sua residência.','Praticou excesso culposo, pois poderia ter fugido em vez de atirar.'],
+   gab:1,leg:'Art. 25 e 25, §único CP (Lei 13.964/19)',
+   exp:'Roberto agiu em LEGÍTIMA DEFESA (art. 25 CP): agressão injusta (faca), atual, a direito próprio, usando meios necessários de forma moderada. O Pacote Anticrime inseriu o §único ao art. 25, criando presunção de legítima defesa no contexto de invasão domiciliar.'},
+  {id:6,mat:'Civil',tema:'Família — Regime de Bens',ex:'OAB 44',dif:'Médio',
+   txt:'Mário e Joana casaram sem pacto antenupcial. Durante o casamento, Mário recebeu herança do pai. Sobre esse bem:',
+   opts:['Integra o patrimônio comum, pois o regime legal é a comunhão universal.','Não se comunica, pois no regime de comunhão parcial a herança é excluída.','Se comunica apenas se Joana contribuiu para sua administração.','Se comunica, pois toda aquisição durante o casamento integra o patrimônio comum.'],
+   gab:1,leg:'Art. 1640 e 1659, I CC',
+   exp:'Sem pacto antenupcial, o regime é Comunhão Parcial (art. 1640 CC). Nesse regime, bens adquiridos por HERANÇA ou doação NÃO se comunicam (art. 1659, I CC). Comunicam-se apenas os bens adquiridos onerosamente na constância do casamento.'},
+  {id:7,mat:'Trabalhista',tema:'Estabilidade Gestante',ex:'OAB 45',dif:'Médio',
+   txt:'Funcionária grávida de 3 meses é dispensada sem justa causa por empresa que ignorava a gravidez. Sobre essa situação:',
+   opts:['A dispensa é válida, pois o empregador não sabia da gravidez e agiu de boa-fé.','A dispensa é nula, com direito à reintegração ou indenização pelo período de estabilidade.','A dispensa é válida, mas a empresa deve pagar 3 meses de indenização.','A estabilidade só é adquirida após comunicação ao empregador.'],
+   gab:1,leg:'Art. 10, II, "b" ADCT; Súmula 244 TST',
+   exp:'A estabilidade gestante é OBJETIVA — não depende do empregador conhecer a gravidez (Súm. 244 TST). Dispensa nula: direito à reintegração ou indenização de TODO o período de estabilidade (da dispensa até 5 meses após o parto).'},
+  {id:8,mat:'Tributário',tema:'Princípios',ex:'OAB 45',dif:'Médio',
+   txt:'Lei publicada em 01/10/2025 aumenta a alíquota do IPTU. Para ser cobrado com nova alíquota, o IPTU deve respeitar:',
+   opts:['Apenas a anterioridade do exercício, podendo ser cobrado a partir de 01/01/2026.','Apenas a anterioridade nonagesimal (90 dias da publicação).','Ambas as anterioridades, prevalecendo o prazo que resultar em maior proteção.','Apenas a legalidade — pode ser cobrado imediatamente após publicação.'],
+   gab:2,leg:'Art. 150, III, "b" e "c" CF/88',
+   exp:'O IPTU deve observar CUMULATIVAMENTE a anterioridade do exercício financeiro E a nonagesimal (art. 150, III, "b" e "c"). Prevalece o prazo que der maior proteção ao contribuinte. Publicada em out/2025: ambas satisfeitas em jan/2026.'},
+  {id:9,mat:'Empresarial',tema:'Falência — Ordem dos Credores',ex:'OAB 44',dif:'Difícil',
+   txt:'Em processo de falência, há créditos trabalhistas (200 SM por credor), com garantia real e quirografários. A ordem CORRETA de pagamento segundo a Lei 11.101/05 é:',
+   opts:['Trabalhistas → garantia real → tributários → quirografários.','Tributários → trabalhistas → garantia real → quirografários.','Garantia real → trabalhistas → tributários → quirografários.','Trabalhistas até 150 SM → garantia real → tributários → quirografários → trabalhistas excedentes.'],
+   gab:3,leg:'Art. 83 Lei 11.101/05',
+   exp:'Ordem na falência (art. 83 Lei 11.101/05): 1º Trabalhistas LIMITADOS a 150 SM (excedente = quirografário); 2º Garantia real; 3º Tributários (exceto multas); 4º Privilégio especial; 5º Privilégio geral; 6º Quirografários; 7º Multas; 8º Subordinados.'},
+  {id:10,mat:'Constitucional',tema:'Controle de Constitucionalidade',ex:'OAB 46',dif:'Difícil',
+   txt:'Confederação sindical de âmbito nacional quer questionar lei estadual contrária a direitos dos trabalhadores no STF. Sobre sua legitimidade para ADI:',
+   opts:['Possui legitimidade universal, podendo questionar qualquer norma.','Não possui legitimidade — apenas partidos políticos podem propor ADI.','Possui legitimidade especial, devendo demonstrar pertinência temática.','Não possui legitimidade — STF só admite ADI de entes públicos.'],
+   gab:2,leg:'Art. 103, IX CF/88; Jurisprudência STF — pertinência temática',
+   exp:'Confederação sindical é legitimada (art. 103, IX CF), mas como LEGITIMADA ESPECIAL deve demonstrar pertinência temática. A questão sobre direitos dos trabalhadores satisfaz esse requisito para uma confederação sindical. Legitimados universais (Presidente, PGR, mesas do CN) não precisam.'},
+  {id:11,mat:'Civil',tema:'Contratos — Vícios do Consentimento',ex:'OAB 43',dif:'Médio',
+   txt:'Ana, em extrema necessidade econômica, vende imóvel por valor muito abaixo do mercado. O comprador sabia da situação e aproveitou-se. Trata-se de:',
+   opts:['Estado de perigo, que torna o negócio anulável.','Lesão, que torna o negócio anulável.','Fraude contra credores, que torna o negócio anulável.','Dolo, que torna o negócio anulável.'],
+   gab:1,leg:'Art. 157 CC',
+   exp:'Trata-se de LESÃO (art. 157 CC): pessoa sob premente necessidade se obriga a prestação manifestamente desproporcional. Difere do estado de perigo (art. 156 CC) pois na lesão a necessidade é econômica/patrimonial, enquanto no estado de perigo é de salvar pessoa de grave dano.'},
+  {id:12,mat:'Proc. Civil',tema:'Competência',ex:'OAB 45',dif:'Médio',
+   txt:'Ação de cobrança de dívida contratual. Contrato celebrado em A, cumprimento em B, réu domiciliado em C. Qual é o foro competente?',
+   opts:['Cidade A, onde o contrato foi celebrado.','Cidade B, foro do lugar do cumprimento da obrigação.','Cidade C, domicílio do réu — regra geral de competência.','Qualquer das três, à escolha do autor.'],
+   gab:2,leg:'Art. 46 e 53, III CPC/15',
+   exp:'Regra geral: domicílio do réu (art. 46 CPC). Para obrigações a serem cumpridas: foro do lugar do cumprimento (art. 53, III, "d" CPC), que é foro alternativo de competência relativa. A cidade B (cumprimento) é competente por ser alternativa mais específica.'},
+];
+
+const FCS=[
+  {mat:'Ética',f:'O sigilo profissional pode ser quebrado quando?',b:'Apenas em autodefesa do próprio advogado acusado pelo cliente. Em todos os demais casos é ABSOLUTO — incluindo crimes confessados, investigações, outros processos. Nem MP, nem juiz podem exigir a quebra.'},
+  {mat:'Ética',f:'Os honorários de sucumbência pertencem a quem?',b:'Ao ADVOGADO (art. 24 EOAB). O cliente NÃO pode transacionar esses honorários sem anuência expressa do causídico. São direito autônomo do advogado, independente dos honorários convencionais.'},
+  {mat:'Constitucional',f:'Quais são as cláusulas pétreas da CF/88?',b:'Art. 60, §4º: (I) forma federativa de Estado; (II) voto direto, secreto, universal e periódico; (III) separação dos Poderes; (IV) direitos e garantias individuais. PEC que tende a abolir qualquer delas é inconstitucional.'},
+  {mat:'Constitucional',f:'O que é eficácia horizontal dos direitos fundamentais?',b:'Vinculação dos direitos fundamentais nas relações entre PARTICULARES (não só Estado x particular). Reconhecida pelo STF. Ex.: clube não pode excluir sócio sem contraditório — viola o devido processo legal nas relações privadas.'},
+  {mat:'Civil',f:'Quais são os absolutamente incapazes pelo CC/2002?',b:'APENAS os menores de 16 anos (art. 3º CC). O Estatuto da Pessoa com Deficiência (Lei 13.146/15) revogou todas as demais hipóteses. PcD são plenamente capazes, podendo ter curatela específica.'},
+  {mat:'Civil',f:'Qual a diferença entre resilição e resolução contratual?',b:'RESILIÇÃO: extinção por vontade das partes, sem inadimplemento (distrato = bilateral; denúncia = unilateral). RESOLUÇÃO: extinção por inadimplemento com possibilidade de perdas e danos. RESCISÃO: por lesão ou estado de perigo.'},
+  {mat:'Penal',f:'Qual a diferença entre dolo eventual e culpa consciente?',b:'DOLO EVENTUAL: prevê o resultado e ASSUME o risco ("dane-se se acontecer"). CULPA CONSCIENTE: prevê mas acredita sinceramente que não vai acontecer. Distinção fundamental em casos de racha automobilístico e similares.'},
+  {mat:'Penal',f:'Quais são as excludentes de ilicitude?',b:'Art. 23 CP: (I) estado de necessidade; (II) legítima defesa; (III) estrito cumprimento do dever legal; (IV) exercício regular de direito. Presentes, excluem a ilicitude — fato típico mas não ilícito → não é crime.'},
+  {mat:'Trabalhista',f:'Quais são os pressupostos da relação de emprego?',b:'PONSS: Pessoa física, Onerosidade, Não eventualidade (habitualidade), Subordinação jurídica, Subjetividade (pessoalidade). Faltando qualquer um, não há relação de emprego — pode haver relação de trabalho, mas sem proteção celetista.'},
+  {mat:'Trabalhista',f:'Gestante demitida sem justa causa tem direito a quê?',b:'Reintegração ao emprego OU, à opção da empregada, indenização de TODO o período de estabilidade (da dispensa até 5 meses após o parto). A estabilidade é OBJETIVA — não depende do empregador conhecer a gravidez (Súm. 244 TST).'},
+  {mat:'Tributário',f:'O que é a anterioridade nonagesimal?',b:'Art. 150, III, "c" CF: vedação de cobrar tributo antes de decorridos 90 dias da lei que o instituiu ou majorou. Acumula com a anterioridade do exercício. Exceções: empréstimos compulsórios emergenciais, II, IE, IOF, IPI (só a nonagesimal, não a do exercício).'},
+  {mat:'Empresarial',f:'O que é a teoria da desconsideração da PJ?',b:'Teoria Maior (CC, art. 50): exige abuso da personalidade — desvio de finalidade OU confusão patrimonial. Teoria Menor (CDC/ambiental): basta insolvência/prejuízo. A desconsideração não extingue a PJ — apenas afasta sua autonomia no caso concreto.'},
+];
+
+const SCHED={
+  0:[{t:'07:00',m:'Constitucional',tp:'Controle de Constitucionalidade',tag:'theory',d:'2h',done:true},{t:'09:30',m:'Questões FGV',tp:'30 questões Civil — Contratos',tag:'exercise',d:'1h',done:true},{t:'14:00',m:'Processo Civil',tp:'Procedimentos Especiais',tag:'theory',d:'1.5h',done:false},{t:'16:00',m:'Flashcards',tp:'Penal + Tributário — repetição espaçada',tag:'review',d:'30min',done:false},{t:'19:30',m:'Penal',tp:'Crimes contra a Dignidade Sexual',tag:'theory',d:'1h',done:false}],
+  1:[{t:'07:00',m:'Ética',tp:'Sigilo + Incompatibilidades + Honorários',tag:'theory',d:'1.5h',done:false},{t:'09:00',m:'Questões FGV',tp:'Simulado Constitucional — 30q',tag:'exercise',d:'2h',done:false},{t:'15:00',m:'Trabalhista',tp:'FGTS, Seguro-Desemprego, Aviso Prévio',tag:'theory',d:'1.5h',done:false},{t:'17:30',m:'Revisão',tp:'Mapa mental Administrativo',tag:'review',d:'45min',done:false}],
+  2:[{t:'08:00',m:'Civil',tp:'Responsabilidade Civil — Teoria Completa',tag:'theory',d:'2h',done:false},{t:'10:30',m:'Questões FGV',tp:'Banco de erros — revisão',tag:'exercise',d:'1h',done:false},{t:'14:00',m:'Empresarial',tp:'Sociedades e Recuperação Judicial',tag:'theory',d:'2h',done:false},{t:'16:30',m:'Revisão',tp:'Súmulas STF e STJ mais cobradas',tag:'review',d:'1h',done:false}],
+  3:[{t:'07:00',m:'Tributário',tp:'Princípios + CTN + Impostos Federais',tag:'theory',d:'2h',done:false},{t:'09:30',m:'Questões FGV',tp:'50 questões mistas',tag:'exercise',d:'2h',done:false},{t:'15:00',m:'Processo Penal',tp:'Prisões e Liberdade Provisória',tag:'theory',d:'1.5h',done:false},{t:'17:00',m:'Flashcards',tp:'Revisão geral — todos os temas',tag:'review',d:'1h',done:false}],
+  4:[{t:'07:00',m:'Consumidor',tp:'Responsabilidade + Práticas Abusivas',tag:'theory',d:'1.5h',done:false},{t:'09:00',m:'Ambiental + ECA',tp:'Princípios + Medidas Socioeducativas',tag:'theory',d:'1.5h',done:false},{t:'14:00',m:'Questões FGV',tp:'40 questões Civil + Constitucional',tag:'exercise',d:'2h',done:false},{t:'16:30',m:'Revisão',tp:'Revisão semanal completa',tag:'review',d:'2h',done:false}],
+  5:[{t:'08:00',m:'Simulado Completo',tp:'80 questões · 5 horas · Todas as matérias',tag:'exercise',d:'5h',done:false},{t:'15:00',m:'Análise',tp:'Revisão do simulado com Tutor IA',tag:'review',d:'2h',done:false}],
+  6:[{t:'09:00',m:'Revisão Leve',tp:'Flashcards + Pontos fracos da semana',tag:'review',d:'2h',done:false},{t:'11:00',m:'Descanso Estratégico',tp:'Mente descansada memoriza melhor 🧠',tag:'review',d:'—',done:false}],
+};
+
+const PECAS_AREAS=[
+  {ic:'📜',n:'Constitucional',cor:'#4f8ef7',ps:['Mandado de Segurança','Habeas Corpus','Ação Popular','Mandado de Injunção']},
+  {ic:'⚖️',n:'Civil',cor:'#a78bfa',ps:['Petição Inicial Indenizatória','Contestação','Ação de Divórcio','Inventário e Partilha']},
+  {ic:'🔒',n:'Penal',cor:'#f25f5c',ps:['Resposta à Acusação','Alegações Finais Defesa','Habeas Corpus Criminal','Recurso em Sentido Estrito']},
+  {ic:'💼',n:'Trabalhista',cor:'#22d3ee',ps:['Reclamação Trabalhista','Contestação Trabalhista','Recurso Ordinário','Agravo de Petição']},
+  {ic:'🏛',n:'Administrativo',cor:'#e879f9',ps:['Mandado de Segurança Administrativo','Ação Civil Pública','Ação de Improbidade Administrativa']},
+  {ic:'🏢',n:'Empresarial',cor:'#a3e635',ps:['Pedido de Recuperação Judicial','Contestação em Falência','Ação de Dissolução Societária']},
+];
+
+const BIB={
+  'Constitucional':[
+    {t:'Direito Constitucional Esquematizado',a:'Pedro Lenza',cor:'#4f8ef7',ic:'📚',stars:'⭐⭐⭐⭐⭐',free:false,obs:'Ideal para OAB — didático e completo'},
+    {t:'Constituição Federal de 1988',a:'(texto oficial — Planalto)',cor:'#4f8ef7',ic:'📄',stars:'⭐⭐⭐⭐⭐',free:true,obs:'Leia o art. 5º completo ao menos 5 vezes'},
+  ],
+  'Civil':[
+    {t:'Manual de Direito Civil',a:'Flávio Tartuce',cor:'#a78bfa',ic:'📚',stars:'⭐⭐⭐⭐⭐',free:false,obs:'Mais usado para OAB — excelente custo-benefício'},
+    {t:'Código Civil (texto oficial)',a:'Lei 10.406/2002',cor:'#a78bfa',ic:'📄',stars:'⭐⭐⭐⭐⭐',free:true,obs:'Priorize art. 1º-232 e 927, 1640-1723'},
+  ],
+  'Penal':[
+    {t:'Direito Penal — Parte Geral',a:'Cleber Masson',cor:'#f25f5c',ic:'📚',stars:'⭐⭐⭐⭐⭐',free:false,obs:'Melhor para OAB — completo e didático'},
+    {t:'Código Penal',a:'Decreto-Lei 2.848/40',cor:'#f25f5c',ic:'📄',stars:'⭐⭐⭐⭐⭐',free:true,obs:'Leia a Parte Geral completa (art. 1-120)'},
+  ],
+  'Ética':[
+    {t:'Estatuto da OAB e CED',a:'OAB (texto oficial)',cor:'#d4a843',ic:'📄',stars:'⭐⭐⭐⭐⭐',free:true,obs:'Leitura OBRIGATÓRIA — baixe no site da OAB'},
+    {t:'Ética Profissional do Advogado',a:'Luiz Flávio Gomes',cor:'#d4a843',ic:'📚',stars:'⭐⭐⭐⭐',free:false,obs:'Melhor livro específico para OAB'},
+  ],
+  'Trabalhista':[
+    {t:'CLT e Legislação Trabalhista',a:'(texto oficial consolidado)',cor:'#22d3ee',ic:'📄',stars:'⭐⭐⭐⭐⭐',free:true,obs:'Artigos 2º, 3º, 443-500, 477-500 são essenciais'},
+    {t:'Curso de Direito do Trabalho',a:'Maurício Godinho Delgado',cor:'#22d3ee',ic:'📚',stars:'⭐⭐⭐⭐⭐',free:false,obs:'Referência máxima — use para aprofundamento'},
+  ],
+};
+
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+let S={
+  page:'home',qIdx:0,qSel:null,qAns:false,qFil:'Todas',
+  chatH:[],fcIdx:0,fcFlip:false,fcMat:'Todas',
+  day:new Date().getDay()===0?6:new Date().getDay()-1,
+  simMode:null,simQs:[],simCur:0,simAns:{},simTmr:null,simSec:0,
+  bibFil:'Constitucional',pdfs:[],
+  apiKey:'',nome:'',streak:14,totalQ:847,acPct:72,horas:156,
+};
+try{const p=JSON.parse(localStorage.getItem('oab48v2')||'{}');Object.assign(S,p);}catch(e){}
+function sv(){localStorage.setItem('oab48v2',JSON.stringify({apiKey:S.apiKey,nome:S.nome,totalQ:S.totalQ,acPct:S.acPct,horas:S.horas,streak:S.streak,pdfs:S.pdfs}));}
+
+/* ═══════════════════════════════════════
+   SPLASH
+═══════════════════════════════════════ */
+const STS=['Carregando matérias...','Preparando questões FGV...','Iniciando Tutor IA...','Calculando Readiness Score...','Pronto! ✓'];
+let sp=0;
+const spFill=document.getElementById('spFill'),spSt=document.getElementById('spSt');
+spSt.textContent=STS[0];
+const spI=setInterval(()=>{
+  sp+=Math.random()*18+4;if(sp>100)sp=100;
+  spFill.style.width=sp+'%';
+  spSt.textContent=STS[Math.min(Math.floor(sp/20),4)];
+  if(sp>=100){clearInterval(spI);setTimeout(()=>{document.getElementById('splash').classList.add('hide');document.getElementById('app').style.display='flex';initApp();setTimeout(()=>document.getElementById('splash').remove(),600);},350);}
+},120);
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+function initApp(){
+  updateGreet();updateCD();setInterval(updateCD,30000);
+  renderHome();renderMats();renderFCs();renderSeg2f();
+  renderQBank();renderChat();renderSched(S.day);renderWeek();
+  renderDash();renderRF();renderPecas();renderBib();renderPdfs();renderSimHist();
+  if(S.apiKey)document.getElementById('inpKey').value=S.apiKey;
+  if(S.nome)document.getElementById('inpNome').value=S.nome;
+  if(localStorage.getItem('itipClosed'))document.getElementById('iTip')?.remove();
+}
+
+/* ═══════════════════════════════════════
+   COUNTDOWN + GREET
+═══════════════════════════════════════ */
+function updateCD(){
+  const t=new Date('2026-12-20T08:00:00'),now=new Date(),d=t-now;
+  if(d<=0)return;
+  const days=Math.floor(d/86400000),hrs=Math.floor((d%86400000)/3600000),mins=Math.floor((d%3600000)/60000);
+  document.getElementById('cdD').textContent=days;
+  document.getElementById('cdH').textContent=String(hrs).padStart(2,'0');
+  document.getElementById('cdM').textContent=String(mins).padStart(2,'0');
+  document.getElementById('hdrCd').textContent=days+' dias';
+  const el=document.getElementById('schedSub');if(el)el.textContent=`Adaptativo · ${days} dias para a prova`;
+}
+function updateGreet(){
+  const h=new Date().getHours(),g=h<12?'Bom dia 🌅':h<18?'Boa tarde ☀️':'Boa noite 🌙';
+  document.getElementById('hGrt').textContent=g+(S.nome?', '+S.nome:'');
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+function nav(p,btn){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(x=>x.classList.remove('active'));
+  const pg=document.getElementById('pg-'+p);if(pg)pg.classList.add('active');
+  if(btn)btn.classList.add('active');
+  else{const nb=document.querySelector(`.ni[data-p="${p}"]`);if(nb)nb.classList.add('active');}
+  S.page=p;closeModal('moreModal');
+}
+function swTab(el,id){
+  el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');
+  ['t1f','t2f','tfc','tpa','tpt','tpm'].forEach(x=>{const e=document.getElementById(x);if(e)e.style.display='none';});
+  const t=document.getElementById(id);if(t)t.style.display='block';
+}
+function openModal(id){document.getElementById(id)?.classList.add('open');}
+function closeModal(id){document.getElementById(id)?.classList.remove('open');}
+document.addEventListener('click',e=>{if(e.target.classList.contains('modal'))e.target.classList.remove('open');});
+function closeInstall(){document.getElementById('iTip')?.remove();localStorage.setItem('itipClosed','1');}
+
+/* ═══════════════════════════════════════
+   HOME
+═══════════════════════════════════════ */
+function renderHome(){
+  document.getElementById('hQ').textContent=S.totalQ;
+  document.getElementById('hA').textContent=S.acPct+'%';
+  document.getElementById('hH').textContent=S.horas+'h';
+  document.getElementById('strN').textContent=S.streak+' dias';
+  const plan=SCHED[S.day]||SCHED[0];
+  document.getElementById('todayPlan').innerHTML=plan.slice(0,3).map(b=>`
+    <div class="pli"><div class="pck${b.done?' done':''}">` +(b.done?'✓':'')+ `</div>
+    <div style="flex:1"><div class="pin">${b.m}</div><div class="pim">${b.tp}</div></div>
+    <div class="pid">${b.d}</div></div>`).join('');
+  document.getElementById('homeRad').innerHTML=MAT.slice(0,6).map(m=>`
+    <div class="radr"><div class="radl" style="font-size:11px">${m.n.substring(0,14)}</div>
+    <div class="radb"><div class="radf" style="width:${m.pct}%;background:${m.cor}"></div></div>
+    <div class="radv">${m.pct}%</div></div>`).join('');
+}
+
+/* ═══════════════════════════════════════
+   TRILHAS
+═══════════════════════════════════════ */
+function renderMats(){
+  document.getElementById('matList').innerHTML=MAT.map(m=>`
+    <div class="mc au" onclick="openMat('${m.id}')">
+      <div class="mi" style="background:${m.cor}18">${m.ic}</div>
+      <div class="mb">
+        <div class="mn">${m.n}</div>
+        <div class="mpr"><div class="mbar"><div class="mbf" style="width:${m.pct}%;background:${m.cor}"></div></div><div class="mpct">${m.pct}%</div></div>
+        <div class="ms">${m.ex} · ${m.qs} questões</div>
+      </div>
+      <span class="tag ${m.hot?'tr':'tg'}">${m.peso}</span>
+    </div>`).join('');
+}
+
+function openMat(id){
+  const m=MAT.find(x=>x.id===id)||{n:id,ic:'📚',cor:'#d4a843',pct:0};
+  document.getElementById('matMC').innerHTML=`
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+      <div style="width:48px;height:48px;border-radius:14px;background:${m.cor}18;display:flex;align-items:center;justify-content:center;font-size:24px">${m.ic}</div>
+      <div><div style="font-family:var(--font-d);font-size:22px">${m.n}</div><div style="font-size:11px;color:var(--text3)">${m.pct}% concluído · Incidência: ${m.peso}</div></div>
+    </div>
+    <div class="pbt" style="margin-bottom:14px"><div class="pbf" style="width:${m.pct}%;background:${m.cor}"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="card tap" onclick="askAI('Faça uma mini-aula completa de ${m.n} focando no que a FGV mais cobra no OAB 48. Inclua conceitos-chave, artigos essenciais, jurisprudência, pegadinhas e questão de fixação.');nav('tutor');closeModal('matModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:20px">🤖</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Aula com Tutor IA</div><div style="font-size:11px;color:var(--text3)">Explicação personalizada agora</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="filterQMat('${m.n}');nav('qbank');closeModal('matModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:20px">🎯</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Questões FGV</div><div style="font-size:11px;color:var(--text3)">${m.qs||0} questões disponíveis</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="askAI('Crie um resumo estratégico completo de ${m.n} para o OAB 48. Organize: o que mais cai na FGV, conceitos essenciais, pegadinhas, legislação e jurisprudência.');nav('tutor');closeModal('matModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:20px">📋</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Resumo Estratégico IA</div><div style="font-size:11px;color:var(--text3)">Gerado com foco FGV</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="askAI('Crie um mapa mental de ${m.n} para o OAB, com hierarquia clara, emojis e conexões entre os institutos.');nav('tutor');closeModal('matModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:20px">🗺️</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Mapa Mental IA</div><div style="font-size:11px;color:var(--text3)">Gerado sob demanda</div></div><div style="color:var(--gold)">→</div></div></div>
+      <div class="card tap" onclick="fcByMat('${m.n}');closeModal('matModal')"><div style="display:flex;align-items:center;gap:12px"><div style="font-size:20px">🃏</div><div style="flex:1"><div style="font-size:14px;font-weight:700">Flashcards</div><div style="font-size:11px;color:var(--text3)">Repetição espaçada Anki</div></div><div style="color:var(--gold)">→</div></div></div>
+    </div>
+    <div style="margin-top:12px;background:var(--bg4);border-radius:var(--r);padding:13px">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:7px">⚡ O que a FGV mais cobra</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.7">${getFocus(m.id)}</div>
+    </div>`;
+  openModal('matModal');
+}
+function getFocus(id){
+  const f={etica:'Sigilo profissional · Honorários de sucumbência · Incompatibilidades · Mandato e renúncia · Publicidade',
+    constitucional:'Art. 5º completo · Controle de Constitucionalidade (ADI, ADPF) · Remédios constitucionais · Processo legislativo',
+    civil:'Prescrição vs. decadência · Responsabilidade civil objetiva · Vícios do consentimento · Regime de bens · Legítima',
+    penal:'Teoria do crime · Excludentes de ilicitude · Dolo eventual vs. culpa consciente · Crimes contra patrimônio · Lei de Drogas',
+    trabalho:'Pressupostos do vínculo · Rescisão e verbas · Estabilidade gestante · Jornada · Equiparação salarial',
+    empresarial:'Sociedade limitada · Recuperação judicial · Ordem credores falência · Títulos de crédito',
+    tributario:'Princípios (anterioridade, legalidade) · Responsabilidade tributária (art. 135 CTN) · Impostos federais'};
+  return f[id]||'Acesse o Tutor IA para análise personalizada desta matéria.';
+}
+
+function renderSeg2f(){
+  const areas=['Constitucional','Civil','Penal','Trabalhista','Administrativo','Empresarial','Tributário'];
+  document.getElementById('seg2f').innerHTML=`
+    <div style="margin-bottom:12px;padding-top:4px">
+      <div style="font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.6">O Tutor IA vai recomendar a melhor área para você com base no seu perfil.</div>
+      <div class="card tap" style="margin-bottom:12px;background:var(--gold-dim);border-color:rgba(212,168,67,.2)" onclick="askAI('Analise cada área da 2ª fase OAB (Constitucional, Civil, Penal, Trabalhista, Administrativo, Empresarial, Tributário) em termos de dificuldade, peças mais cobradas e estratégia. Me dê uma recomendação da melhor área para fazer a 2ª fase.');nav('tutor')">
+        <div style="display:flex;align-items:center;gap:12px"><div style="font-size:22px">🤖</div><div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--gold)">IA recomenda minha área</div><div style="font-size:11px;color:var(--text3)">Análise estratégica personalizada</div></div><div style="color:var(--gold)">→</div></div>
+      </div>
+    </div>
+    ${areas.map(a=>`
+      <div class="mc" style="margin-bottom:8px" onclick="askAI('Me explique completamente a 2ª fase OAB na área de ${a}: peças mais cobradas pela FGV, estrutura de cada peça, pontos do espelho de correção e estratégia de estudo.');nav('tutor')">
+        <div class="mi" style="background:var(--gold-dim)">📝</div>
+        <div class="mb"><div class="mn">${a}</div><div class="ms">Peças processuais + Questões discursivas</div></div>
+        <div style="color:var(--gold);font-size:18px">→</div>
+      </div>`).join('')}`;
+}
+
+/* ═══════════════════════════════════════
+   FLASHCARDS
+═══════════════════════════════════════ */
+function renderFCs(){
+  const fcs=FCS.filter(f=>S.fcMat==='Todas'||f.mat===S.fcMat);
+  const fc=fcs[S.fcIdx%fcs.length];
+  const mats=['Todas',...new Set(FCS.map(f=>f.mat))];
+  document.getElementById('fcArea').innerHTML=`
+    <div style="display:flex;gap:7px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none">
+      ${mats.map(m=>`<div class="chip${S.fcMat===m?' on':''}" onclick="setFCMat('${m}')">${m}</div>`).join('')}
+    </div>
+    <div class="fcdeck">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <span class="tag tg">${fc.mat}</span>
+        <span style="font-family:var(--font-m);font-size:11px;color:var(--text3)">${(S.fcIdx%fcs.length)+1}/${fcs.length}</span>
+      </div>
+      <div class="fcface${S.fcFlip?' fl':''}" onclick="flipFC()">
+        <div class="fch">${S.fcFlip?'RESPOSTA — toque para voltar':'FRENTE — toque para revelar'}</div>
+        <div class="${S.fcFlip?'fcbt':'fct'}">${S.fcFlip?fc.b:fc.f}</div>
+      </div>
+      <div class="fcbs">
+        <button class="fbd" onclick="rateFC(0)">😕 Difícil</button>
+        <button class="fbo" onclick="rateFC(1)">😐 Ok</button>
+        <button class="fbe" onclick="rateFC(2)">😊 Fácil</button>
+      </div>
+      <div style="text-align:center;margin-top:10px;font-size:11px;color:var(--text3)">Repetição espaçada ativo · Próxima revisão automática</div>
+    </div>`;
+}
+function setFCMat(m){S.fcMat=m;S.fcIdx=0;S.fcFlip=false;renderFCs();}
+function flipFC(){S.fcFlip=!S.fcFlip;renderFCs();}
+function rateFC(r){const fcs=FCS.filter(f=>S.fcMat==='Todas'||f.mat===S.fcMat);S.fcIdx=(S.fcIdx+1)%fcs.length;S.fcFlip=false;renderFCs();}
+function fcByMat(mat){S.fcMat=mat;S.fcIdx=0;S.fcFlip=false;nav('trilhas');setTimeout(()=>{const t=document.querySelectorAll('#pg-trilhas .tab')[2];if(t)swTab(t,'tfc');},100);}
+
+/* ═══════════════════════════════════════
+   QBANK
+═══════════════════════════════════════ */
+function renderQBank(){
+  const mats=['Todas',...new Set(QS.map(q=>q.mat)),'Erros'];
+  document.getElementById('qChips').innerHTML=mats.map(m=>`<div class="chip${S.qFil===m?' on':''}" onclick="setQFil('${m}')">${m}</div>`).join('');
+  renderQ();
+}
+function setQFil(f){S.qFil=f;S.qIdx=0;S.qSel=null;S.qAns=false;renderQBank();}
+function filterQMat(m){S.qFil=m;S.qIdx=0;S.qSel=null;S.qAns=false;renderQBank();}
+function getQs(){if(S.qFil==='Todas')return QS;if(S.qFil==='Erros')return QS.slice(0,4);return QS.filter(q=>q.mat===S.qFil);}
+
+function renderQ(){
+  const qs=getQs();
+  if(!qs.length){document.getElementById('qArea').innerHTML='<div style="padding:24px;text-align:center;color:var(--text3)">Nenhuma questão nesta categoria.</div>';return;}
+  const q=qs[S.qIdx%qs.length];S.qAns=false;S.qSel=null;
+  const dc={Fácil:'var(--green)',Médio:'var(--gold)',Difícil:'var(--red)'};
+  document.getElementById('qArea').innerHTML=`
+    <div class="qcard">
+      <div class="qhdr">
+        <div class="qmeta">${q.mat} · <strong>${q.tema}</strong> · ${q.ex}</div>
+        <div class="qdif" style="background:${dc[q.dif]}18;color:${dc[q.dif]}">${q.dif}</div>
+      </div>
+      <div class="qbody">
+        <div class="qtxt">${q.txt}</div>
+        <div class="qopts">${q.opts.map((o,i)=>`<div class="qopt" id="qo${i}" onclick="selQ(${i})"><div class="qltr">${String.fromCharCode(65+i)}</div><div>${o}</div></div>`).join('')}</div>
+      </div>
+      <div class="qfoot">
+        <button class="btn btn-ghost" onclick="skipQ()">Pular</button>
+        <button class="btn btn-gold" style="flex:1" onclick="checkQ()">Confirmar Resposta</button>
+      </div>
+    </div>
+    <div class="qexp" id="qExp"></div>
+    <div style="margin:0 18px 14px;display:flex;gap:8px">
+      <div class="card" style="flex:1;text-align:center;padding:12px"><div style="font-size:10px;color:var(--text3);margin-bottom:4px">Questão</div><div style="font-family:var(--font-m);font-size:16px">${(S.qIdx%qs.length)+1}/${qs.length}</div></div>
+      <div class="card" style="flex:1;text-align:center;padding:12px"><div style="font-size:10px;color:var(--text3);margin-bottom:4px">Acertos</div><div style="font-family:var(--font-m);font-size:16px;color:var(--green)">${S.acPct}%</div></div>
+    </div>`;
+}
+function selQ(i){if(S.qAns)return;S.qSel=i;document.querySelectorAll('.qopt').forEach((o,j)=>o.classList.toggle('sel',j===i));}
+function checkQ(){
+  if(S.qSel===null||S.qAns)return;S.qAns=true;
+  const qs=getQs(),q=qs[S.qIdx%qs.length];
+  document.querySelectorAll('.qopt').forEach((o,i)=>{if(i===q.gab)o.classList.add('correct');else if(i===S.qSel&&i!==q.gab)o.classList.add('wrong');o.classList.remove('sel');});
+  const e=document.getElementById('qExp');
+  e.innerHTML=`<div class="qelbl">⚡ Gabarito Comentado</div><div class="qetxt">${q.exp}</div><div class="qeleg">📖 ${q.leg}</div>`;
+  e.classList.add('show');
+  if(S.qSel===q.gab){S.acPct=Math.min(100,Math.round(S.acPct*.96+4));}
+  document.querySelector('.qfoot').innerHTML=`<button class="btn btn-ghost" onclick="askAI('Explique detalhadamente o tema: ${q.tema} — o que a FGV cobra, artigos relevantes e pegadinhas.');nav('tutor')">🤖 Dúvida com IA</button><button class="btn btn-gold" style="flex:1" onclick="nextQ()">Próxima →</button>`;
+}
+function nextQ(){S.qIdx++;S.qAns=false;S.qSel=null;S.totalQ++;sv();document.getElementById('hQ').textContent=S.totalQ;renderQ();document.querySelector('.qcard')?.scrollIntoView({behavior:'smooth',block:'start'});}
+function skipQ(){S.qIdx++;S.qAns=false;S.qSel=null;renderQ();}
+
+/* ═══════════════════════════════════════
+   TUTOR IA
+═══════════════════════════════════════ */
+const SUGG=['Explique habeas corpus','Resumo de Direito Civil','O que mais cai em Ética?','Diferença dolo e culpa','Como estudar para 2ª fase','Temas quentes OAB 48','Prescrição vs. decadência','Súmulas mais cobradas','Princípios do Direito Penal'];
+
+function renderChat(){
+  if(!document.getElementById('chatMsgs').innerHTML)
+    addBub('ai','Olá! Sou seu tutor jurídico especializado no <strong>OAB 48</strong>. Posso explicar matérias, criar resumos, gerar mapas mentais, corrigir peças e muito mais. Por onde começamos?');
+  document.getElementById('chatSugg').innerHTML=SUGG.map(s=>`<div class="csc" onclick="askAI('${s}')">${s}</div>`).join('');
+}
+function askAI(txt){document.getElementById('chatInp').value=txt;sendChat();}
+async function sendChat(){
+  const inp=document.getElementById('chatInp'),txt=inp.value.trim();
+  if(!txt)return;inp.value='';inp.style.height='auto';
+  addBub('user',txt);const typing=addTyping();
+  try{
+    const hdrs={'Content-Type':'application/json'};
+    if(S.apiKey)hdrs['x-api-key']=S.apiKey;
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body:JSON.stringify({
+      model:'claude-sonnet-4-20250514',max_tokens:1000,
+      system:`Você é o Professor OAB48, tutor jurídico de elite para o Exame da OAB 48 (FGV).
+
+Ao responder:
+1. Cite artigos de lei relevantes (ex: art. 5º, §1º CF)
+2. Destaque o que a FGV cobra com "⚡ FGV cobra muito:"
+3. Use **negrito** para conceitos-chave
+4. Seja objetivo — 150 a 400 palavras salvo pedido contrário
+5. Ao final, dê uma dica estratégica rápida
+6. Use tabelas quando comparar institutos
+7. Para 2ª fase: ensine estrutura da peça + pontos do espelho FGV
+
+Responda sempre em português brasileiro. Seja encorajador e direto.`,
+      messages:[...S.chatH,{role:'user',content:txt}]
+    })});
+    const d=await res.json();
+    const reply=d.content?.map(c=>c.text||'').join('')||'Desculpe, ocorreu um erro. Configure sua API key em ⚙.';
+    typing.remove();addBub('ai',reply);
+    S.chatH.push({role:'user',content:txt},{role:'assistant',content:reply});
+    if(S.chatH.length>20)S.chatH=S.chatH.slice(-20);
+  }catch(e){
+    typing.remove();
+    if(!S.apiKey)addBub('ai','⚙ Configure sua <strong>API key do Claude</strong> em ⚙ (canto superior direito) para ativar o Tutor IA. Obtenha gratuitamente em <strong>console.anthropic.com</strong>');
+    else addBub('ai','Erro de conexão. Verifique sua internet e tente novamente.');
+  }
+}
+function addBub(role,html){
+  const msgs=document.getElementById('chatMsgs'),div=document.createElement('div');
+  div.className=`msg ${role}`;
+  const fmt=html.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  div.innerHTML=`<div class="mav ${role==='ai'?'mav-ai':'mav-u'}">${role==='ai'?'⚖':'VO'}</div><div class="bub">${fmt}</div>`;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function addTyping(){
+  const msgs=document.getElementById('chatMsgs'),div=document.createElement('div');
+  div.className='msg ai';
+  div.innerHTML=`<div class="mav mav-ai">⚖</div><div class="bub"><div class="tdots"><div class="td"></div><div class="td"></div><div class="td"></div></div></div>`;
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;return div;
+}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,90)+'px';}
+
+/* ═══════════════════════════════════════
+   CRONOGRAMA
+═══════════════════════════════════════ */
+function renderWeek(){
+  const days=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],today=new Date();
+  document.getElementById('weekNav').innerHTML=days.map((d,i)=>{
+    const dt=new Date(today);dt.setDate(today.getDate()-((today.getDay()||7)-1)+i);
+    return `<div class="dp${i===S.day?' on':''}" onclick="selDay(${i},this)"><div class="dpn">${d}</div><div class="dpd">${dt.getDate()}</div></div>`;
+  }).join('');
+}
+function selDay(i,el){S.day=i;document.querySelectorAll('.dp').forEach(d=>d.classList.remove('on'));el.classList.add('on');renderSched(i);}
+function renderSched(day){
+  const bs=SCHED[day]||SCHED[0];
+  const tc={theory:'tb',review:'tp',exercise:'tgr'};const tn={theory:'Teoria',review:'Revisão',exercise:'Exercícios'};
+  document.getElementById('schedBlocks').innerHTML=bs.map((b,i)=>`
+    <div class="sb au" style="animation-delay:${i*.07}s">
+      <div class="sbt">${b.t}</div>
+      <div class="sbl"></div>
+      <div class="sbb">
+        <div class="sbm">${b.m}</div>
+        <div class="sbp">${b.tp}</div>
+        <div class="sbtg"><span class="tag ${tc[b.tag]}">${tn[b.tag]}</span><span class="tag" style="background:var(--bg4);color:var(--text3)">⏱ ${b.d}</span></div>
+      </div>
+      <div class="sbst${b.done?' done':''}" onclick="toggleS(this,${i},${day})">${b.done?'✓':''}</div>
+    </div>`).join('');
+}
+function toggleS(el,i,day){const b=SCHED[day]||SCHED[0];if(b[i])b[i].done=!b[i].done;el.classList.toggle('done');el.textContent=el.classList.contains('done')?'✓':'';}
+
+/* ═══════════════════════════════════════
+   SIMULADO
+═══════════════════════════════════════ */
+function renderSimHist(){
+  document.getElementById('simHist').innerHTML=[
+    {dt:'24/04/2026',mode:'Completo',sc:'74%',c:59,t:80},
+    {dt:'18/04/2026',mode:'Rápido',sc:'68%',c:14,t:20},
+    {dt:'10/04/2026',mode:'Completo',sc:'62%',c:50,t:80},
+  ].map(h=>`<div class="card" style="padding:13px 15px"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:700">${h.mode} · ${h.dt}</div><div style="font-size:11px;color:var(--text3);margin-top:2px">${h.c}/${h.t} corretas</div></div><div style="text-align:right"><div style="font-family:var(--font-m);font-size:20px;color:var(--green)">${h.sc}</div><span class="tag tgr">Aprovado</span></div></div></div>`).join('');
+}
+function startSim(mode){
+  S.simMode=mode;const cnt=mode==='completo'?80:mode==='rapido'?20:30;
+  const pool=[];while(pool.length<cnt)pool.push(...QS);S.simQs=pool.slice(0,cnt);
+  S.simCur=0;S.simAns={};S.simSec=mode==='completo'?18000:mode==='rapido'?3600:5400;
+  document.getElementById('simHome').style.display='none';
+  document.getElementById('simRes').style.display='none';
+  const r=document.getElementById('simRun');r.style.display='flex';
+  startSimTmr();renderSimQ();
+}
+function startSimTmr(){
+  clearInterval(S.simTmr);
+  S.simTmr=setInterval(()=>{S.simSec--;updateSimTmr();if(S.simSec<=0){clearInterval(S.simTmr);finishSim();}},1000);
+}
+function updateSimTmr(){
+  const h=Math.floor(S.simSec/3600),m=Math.floor((S.simSec%3600)/60),s=S.simSec%60;
+  const el=document.getElementById('simTm');if(!el)return;
+  el.textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  el.classList.toggle('warn',S.simSec<300);
+}
+function renderSimQ(){
+  const q=S.simQs[S.simCur];
+  document.getElementById('simCt').textContent=`${S.simCur+1}/${S.simQs.length}`;
+  document.getElementById('simMat').textContent=q.mat;
+  document.getElementById('simProg').style.width=((S.simCur+1)/S.simQs.length*100)+'%';
+  const sel=S.simAns[S.simCur];
+  document.getElementById('simQArea').innerHTML=`
+    <div style="font-size:11px;color:var(--text3);margin-bottom:8px">${q.mat} · ${q.tema}</div>
+    <div style="font-size:14px;line-height:1.65;margin-bottom:14px">${q.txt}</div>
+    <div style="display:flex;flex-direction:column;gap:7px">
+      ${q.opts.map((o,i)=>`<div class="qopt${sel===i?' sel':''}" onclick="simSel(${i})"><div class="qltr">${String.fromCharCode(65+i)}</div><div>${o}</div></div>`).join('')}
+    </div>`;
+  document.getElementById('simNxt').textContent=S.simCur===S.simQs.length-1?'Finalizar ✓':'Próxima →';
+}
+function simSel(i){S.simAns[S.simCur]=i;renderSimQ();}
+function simPrev(){if(S.simCur>0){S.simCur--;renderSimQ();}}
+function simNext(){if(S.simCur<S.simQs.length-1){S.simCur++;renderSimQ();}else finishSim();}
+function pauseSim(){clearInterval(S.simTmr);document.getElementById('simRun').style.display='none';document.getElementById('simHome').style.display='block';}
+function finishSim(){
+  clearInterval(S.simTmr);
+  let c=0;S.simQs.forEach((q,i)=>{if(S.simAns[i]===q.gab)c++;});
+  const pct=Math.round(c/S.simQs.length*100),ok=pct>=62.5;
+  document.getElementById('simRun').style.display='none';
+  document.getElementById('simRes').style.display='block';
+  const byM={};S.simQs.forEach((q,i)=>{if(!byM[q.mat])byM[q.mat]={c:0,t:0};byM[q.mat].t++;if(S.simAns[i]===q.gab)byM[q.mat].c++;});
+  document.getElementById('simResContent').innerHTML=`
+    <div class="srh">
+      <div style="font-size:11px;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px">Resultado Final</div>
+      <div class="srg" style="color:${ok?'var(--green)':'var(--red)'}">${pct}%</div>
+      <div class="srs ${ok?'srok':'srno'}">${ok?'✓ APROVADO':'✗ REPROVADO'} — ${c}/${S.simQs.length}</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:6px">Mínimo: 62,5% (50/80)</div>
+    </div>
+    <div class="card"><div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px">📊 Por Matéria</div>
+    ${Object.entries(byM).map(([mat,d])=>`<div class="radr" style="margin-bottom:8px"><div class="radl">${mat}</div><div class="radb"><div class="radf" style="width:${Math.round(d.c/d.t*100)}%;background:${d.c/d.t>=.625?'var(--green)':'var(--red)'}"></div></div><div class="radv">${Math.round(d.c/d.t*100)}%</div></div>`).join('')}</div>
+    <button class="btn btn-gold" style="width:100%" onclick="askAI('Acabei um simulado OAB e obtive ${pct}% (${c}/${S.simQs.length}). Analise estrategicamente meu resultado e crie um plano de revisão para melhorar.');nav('tutor')">🤖 Análise IA do simulado</button>
+    <button class="btn btn-ghost" style="width:100%" onclick="document.getElementById('simRes').style.display='none';document.getElementById('simHome').style.display='block'">← Voltar</button>`;
+  S.totalQ+=S.simQs.length;S.acPct=Math.round((S.acPct*847+c)/(847+S.simQs.length));sv();
+}
+
+/* ═══════════════════════════════════════
+   DASHBOARD
+═══════════════════════════════════════ */
+function renderDash(){
+  document.getElementById('dashRad').innerHTML=MAT.map(m=>`
+    <div class="radr"><div class="radl">${m.n.substring(0,13)}</div><div class="radb"><div class="radf" style="width:${m.pct}%;background:${m.cor}"></div></div><div class="radv">${m.pct}%</div></div>`).join('');
+  document.getElementById('heatmap').innerHTML=Array.from({length:35},(_,i)=>{if(i>30)return 0;const r=Math.random();return r<.12?0:r<.32?1:r<.58?2:r<.80?3:4;}).map(l=>`<div class="hmc l${l}"></div>`).join('');
+  document.getElementById('insights').innerHTML=[
+    {ic:'⚠️',t:'Tributário está com 25% de progresso. Dedique 2h adicionais esta semana.',a:'Estudar agora'},
+    {ic:'🔥',t:'Ética está ótima (85%). Mantenha revisão com flashcards a cada 7 dias.',a:'Revisar'},
+    {ic:'🎯',t:'Sua taxa de acerto em Constitucional subiu 8% nas últimas 2 semanas.',a:'Ver questões'},
+    {ic:'📅',t:'Você está 3 dias à frente do cronograma. Excelente ritmo!',a:'Ver plano'},
+  ].map(i=>`<div class="ini"><div class="inix">${i.ic}</div><div class="init">${i.t}</div><div class="inia" onclick="nav('tutor')">${i.a} →</div></div>`).join('');
+}
+
+/* ═══════════════════════════════════════
+   RETA FINAL
+═══════════════════════════════════════ */
+function renderRF(){
+  document.getElementById('rfDays').innerHTML=[
+    {n:1,t:'Revisão Ética + Constitucional',is:['Leitura de resumos e mapas mentais','50 questões FGV cronometradas','Flashcards — 30 cards mínimo']},
+    {n:2,t:'Civil — Parte Geral + Contratos',is:['Teoria 2h com Tutor IA','40 questões FGV','Mapa mental gerado por IA']},
+    {n:3,t:'Penal — Teoria do Crime + Crimes',is:['Mini-aula com Tutor IA','35 questões temáticas','Revisão dos erros']},
+    {n:4,t:'Simulado Parcial (40 questões)',is:['Ética + Constitucional + Civil','Cronometrado 2h','Análise imediata com IA']},
+    {n:5,t:'Processo Civil + Processo Penal',is:['Teoria 2h','30 questões cada','Súmulas STJ']},
+    {n:6,t:'Trabalhista + Empresarial',is:['Revisão completa','40 questões','Caderno de erros']},
+    {n:7,t:'Simulado Completo — 80 questões',is:['5h cronometradas','Todas as matérias','Análise com Tutor IA']},
+  ].map(d=>`<div class="rfday"><div class="rfdd">DIA ${d.n} DE 60</div><div class="rfdt">${d.t}</div><div class="rfdi">${d.is.map(i=>`<div class="rfdit"><div class="rfdot"></div>${i}</div>`).join('')}</div></div>`).join('');
+}
+
+/* ═══════════════════════════════════════
+   PEÇAS
+═══════════════════════════════════════ */
+function renderPecas(){
+  document.getElementById('pecaGrid').innerHTML=PECAS_AREAS.map(a=>`
+    <div class="pagc card" onclick="askAI('Me explique a 2ª fase OAB na área de ${a.n}. Quais são as peças mais cobradas pela FGV? Para cada peça: estrutura, artigos, argumentos e pontos do espelho de correção.');nav('tutor')">
+      <div class="pagi">${a.ic}</div>
+      <div class="pagn">${a.n}</div>
+      <div class="pagq">${a.ps.length} modelos</div>
+      <div class="pbt" style="margin-top:8px"><div class="pbf" style="width:${Math.round(Math.random()*40+30)}%;background:${a.cor}"></div></div>
+    </div>`).join('');
+  document.getElementById('pecaMod').innerHTML=PECAS_AREAS.map(a=>a.ps.map(p=>`
+    <div class="peci" onclick="askAI('Mostre o modelo completo e comentado da peça: ${p} na área de ${a.n} para o OAB. Inclua: estrutura, artigos, teses, pontos do espelho FGV e dicas de execução.');nav('tutor')">
+      <div style="font-size:18px">${a.ic}</div>
+      <div class="pecia" style="flex:1"><div style="font-size:13px;font-weight:700">${p}</div><div style="font-size:11px;color:var(--text3);margin-top:2px">${a.n} · Modelo comentado FGV</div></div>
+      <div class="pecia">→</div>
+    </div>`).join('')).join('<div style="height:4px"></div>');
+}
+async function corrigirPeca(){
+  const txt=document.getElementById('pecaInp').value.trim();
+  const area=document.getElementById('pecaSel').value;
+  if(!txt){alert('Cole sua peça no campo acima.');return;}
+  const res=document.getElementById('pecaRes');res.style.display='block';
+  res.innerHTML=`<div class="card" style="padding:16px;text-align:center"><div class="pulse" style="font-size:14px;color:var(--gold)">🤖 Tutor IA corrigindo sua peça...</div></div>`;
+  askAI(`Corrija esta peça de ${area} como o espelho de correção da FGV. Avalie item por item: (1) endereçamento e identificação, (2) exposição dos fatos, (3) fundamentação jurídica e artigos, (4) pedidos e encerramento, (5) aspectos formais. Para cada item: nota 0-2 e comentário. Calcule nota final estimada (0-10). Peça:\n\n${txt.substring(0,600)}`);
+  res.innerHTML=`<div class="card" style="padding:14px;background:var(--gold-dim);border-color:rgba(212,168,67,.2)"><div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:4px">✓ Enviado ao Tutor IA</div><div style="font-size:12px;color:var(--text2)">Veja a correção completa na aba Tutor IA</div></div>`;
+  nav('tutor');
+}
+
+/* ═══════════════════════════════════════
+   PDF
+═══════════════════════════════════════ */
+function renderPdfs(){
+  const sample=[{n:'Constituição Federal Anotada.pdf',s:'2.4 MB',d:'20/04/2026'},{n:'Resumo Penal — Masson.pdf',s:'1.8 MB',d:'15/04/2026'}];
+  const all=[...sample,...(S.pdfs||[])];
+  if(!all.length){document.getElementById('pdfList').innerHTML=`<div style="text-align:center;padding:32px;color:var(--text3)"><div style="font-size:32px;margin-bottom:8px">📂</div><div>Nenhum material ainda</div><div style="font-size:12px;margin-top:4px">Adicione seus PDFs acima</div></div>`;return;}
+  document.getElementById('pdfList').innerHTML=all.map(f=>`
+    <div class="pdfi">
+      <div class="pdfic">📄</div>
+      <div class="pdfb"><div class="pdfn">${f.n}</div><div class="pdfm">${f.s||''} · ${f.d||'Hoje'}</div></div>
+      <div class="pdfas">
+        <button class="pdfab" onclick="askAI('Faça um resumo estratégico para o OAB do material: ${f.n}');nav('tutor')">🤖 IA</button>
+        <button class="pdfab" onclick="askAI('Quais os principais tópicos do material ${f.n} relevantes para o OAB?');nav('tutor')">💬</button>
+      </div>
+    </div>`).join('');
+}
+function handleUpload(e){
+  Array.from(e.target.files).forEach(f=>{S.pdfs.push({n:f.name,s:(f.size/1024/1024).toFixed(1)+' MB',d:new Date().toLocaleDateString('pt-BR')});});
+  sv();renderPdfs();
+  if(e.target.files.length){
+    const f=e.target.files[0];
+    document.getElementById('pdfMC').innerHTML=`
+      <div class="mtitle">📄 ${f.name}</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="card tap" onclick="askAI('Faça um resumo estratégico para o OAB do material: ${f.name}');nav('tutor');closeModal('pdfModal')"><div style="display:flex;align-items:center;gap:10px"><div style="font-size:18px">📋</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Resumo IA</div><div style="font-size:11px;color:var(--text3)">Resumo estratégico para OAB</div></div><div style="color:var(--gold)">→</div></div></div>
+        <div class="card tap" onclick="askAI('Gere flashcards do material ${f.name} no formato pergunta/resposta para estudo do OAB');nav('tutor');closeModal('pdfModal')"><div style="display:flex;align-items:center;gap:10px"><div style="font-size:18px">🃏</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Gerar Flashcards</div><div style="font-size:11px;color:var(--text3)">Converte o material em cards</div></div><div style="color:var(--gold)">→</div></div></div>
+        <div class="card tap" onclick="askAI('Explique os conceitos mais importantes de ${f.name} de forma didática para o OAB');nav('tutor');closeModal('pdfModal')"><div style="display:flex;align-items:center;gap:10px"><div style="font-size:18px">🎓</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Mini-aula do conteúdo</div><div style="font-size:11px;color:var(--text3)">IA explica como professor</div></div><div style="color:var(--gold)">→</div></div></div>
+      </div>`;
+    openModal('pdfModal');
+  }
+}
+
+/* ═══════════════════════════════════════
+   BIBLIOTECA
+═══════════════════════════════════════ */
+function renderBib(){
+  const mats=Object.keys(BIB);
+  document.getElementById('bibChips').innerHTML=mats.map(m=>`<div class="chip${S.bibFil===m?' on':''}" onclick="setBibFil('${m}')">${m}</div>`).join('');
+  const books=BIB[S.bibFil]||[];
+  document.getElementById('bibContent').innerHTML=`
+    <div class="bks">
+      <div class="bkst">Melhores livros — ${S.bibFil}</div>
+      ${books.map(b=>`
+        <div class="bkc">
+          <div class="bksp" style="background:${b.cor}18">${b.ic}</div>
+          <div class="bkb">
+            <div class="bkt">${b.t}</div>
+            <div class="bka">${b.a}</div>
+            <div class="bkst2">${b.stars}</div>
+            <div class="bkts">${b.free?'<span class="tag tgr">Gratuito</span>':'<span class="tag tg">Pago</span>'}<span class="tag tb">OAB recomendado</span></div>
+            <div style="font-size:11px;color:var(--text3);margin-top:6px">${b.obs}</div>
+          </div>
+        </div>`).join('')}
+      <div class="card tap" style="margin-top:8px;padding:14px" onclick="askAI('Crie o plano de leitura ideal para ${S.bibFil} para aprovação no OAB 48. Liste os materiais na ordem de estudo com estimativa de tempo e estratégia.')">
+        <div style="display:flex;align-items:center;gap:12px"><div style="font-size:18px">🤖</div><div style="flex:1"><div style="font-size:13px;font-weight:700">IA cria plano de leitura</div><div style="font-size:11px;color:var(--text3)">Ordem ideal + estimativa de tempo</div></div><div style="color:var(--gold)">→</div></div>
+      </div>
+    </div>
+    <div class="bks">
+      <div class="bkst">Gratuitos Online</div>
+      <div class="bkc"><div class="bksp" style="background:var(--green-dim)">🌐</div><div class="bkb"><div class="bkt">Planalto.gov.br</div><div class="bka">Legislação federal oficial e atualizada</div><div class="bkts"><span class="tag tgr">Gratuito</span><span class="tag tb">Essencial</span></div><div style="font-size:11px;color:var(--text3);margin-top:6px">Fonte oficial de todas as leis — sempre atualizada</div></div></div>
+      <div class="bkc"><div class="bksp" style="background:var(--accent-dim)">📱</div><div class="bkb"><div class="bkt">JusBrasil</div><div class="bka">Jurisprudência e legislação comentada</div><div class="bkts"><span class="tag tgr">Gratuito</span></div><div style="font-size:11px;color:var(--text3);margin-top:6px">Ótimo para buscar jurisprudência e artigos comentados</div></div></div>
+    </div>`;
+}
+function setBibFil(m){S.bibFil=m;renderBib();}
+
+/* ═══════════════════════════════════════
+   SETTINGS
+═══════════════════════════════════════ */
+function saveSettings(){
+  S.apiKey=document.getElementById('inpKey').value.trim();
+  S.nome=document.getElementById('inpNome').value.trim();
+  sv();updateGreet();closeModal('settingsModal');
+  addBub('ai',`✓ Configurações salvas! ${S.nome?'Olá, **'+S.nome+'**! ':''} ${S.apiKey?'Tutor IA ativado com sucesso 🎉':'Configure a API key para ativar o Tutor IA.'}`);
+  nav('tutor');
+}
+
+/* SERVICE WORKER */
+/* SW desabilitado na versão single-file */
+</script>
+
+</body>
+</html>
