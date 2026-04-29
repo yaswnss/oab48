@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Gerar Ícones OAB48</title></head>
+<body>
+<canvas id="c192" width="192" height="192" style="display:block;margin:10px"></canvas>
+<canvas id="c512" width="512" height="512" style="display:block;margin:10px"></canvas>
+<button onclick="download()">Download Ícones</button>
+<script>
+function drawIcon(canvas, size) {
+  const ctx = canvas.getContext('2d');
+  const r = size * 0.18;
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, size, size);
+  bg.addColorStop(0, '#1a1a2e');
+  bg.addColorStop(1, '#16213e');
+  ctx.fillStyle = bg;
+  roundRect(ctx, 0, 0, size, size, r);
+  ctx.fill();
+  // Gold gradient circle
+  const cx = size/2, cy = size/2, rad = size * 0.35;
+  const grad = ctx.createRadialGradient(cx-rad*0.2, cy-rad*0.2, 0, cx, cy, rad);
+  grad.addColorStop(0, '#f0c060');
+  grad.addColorStop(1, '#d4a843');
+  ctx.fillStyle = grad;
+  ctx.shadowColor = 'rgba(212,168,67,0.5)';
+  ctx.shadowBlur = size * 0.1;
+  ctx.beginPath();
+  ctx.arc(cx, cy, rad, 0, Math.PI*2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
+  // Scale emoji / text
+  ctx.fillStyle = '#0a0a0f';
+  ctx.font = `bold ${size*0.28}px serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('⚖', cx, cy);
+}
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.lineTo(x+w-r, y);
+  ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+  ctx.lineTo(x+w, y+h-r);
+  ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+  ctx.lineTo(x+r, y+h);
+  ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+  ctx.lineTo(x, y+r);
+  ctx.quadraticCurveTo(x, y, x+r, y);
+  ctx.closePath();
+}
+drawIcon(document.getElementById('c192'), 192);
+drawIcon(document.getElementById('c512'), 512);
+function download() {
+  ['192','512'].forEach(s => {
+    const a = document.createElement('a');
+    a.download = `icon-${s}.png`;
+    a.href = document.getElementById('c'+s).toDataURL('image/png');
+    a.click();
+  });
+}
+</script>
+</body>
+</html>
