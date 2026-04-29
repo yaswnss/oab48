@@ -2,8 +2,8 @@
   "name": "OAB48 — Sistema de Aprovação",
   "short_name": "OAB48",
   "description": "Sistema operacional completo para aprovação no 48º Exame OAB — Tutor IA, Questões FGV, Simulado, Cronograma e muito mais.",
-  "start_url": "/index.html",
-  "scope": "/",
+  "start_url": "./"
+  "scope": "./"
   "display": "standalone",
   "background_color": "#080810",
   "theme_color": "#080810",
