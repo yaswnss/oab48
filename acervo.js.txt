@@ -1,0 +1,875 @@
+/* ═══════════════════════════════════════════════════════════
+ACERVO JURÍDICO COMPLETO OAB48
+Doutrina + Legislação + Jurisprudência + FGV
+═══════════════════════════════════════════════════════════ */
+
+window.ACERVO_P1 = {
+
+// ─────────────────────────────────────────────────────────────
+// ÉTICA PROFISSIONAL
+// ─────────────────────────────────────────────────────────────
+etica: {
+topicos: [
+{
+id: ‘et01’,
+titulo: ‘1. Estatuto da OAB — Visão geral e atividades privativas’,
+conteudo: `
+
+# Estatuto da OAB (Lei 8.906/1994)
+
+## Estrutura
+
+A Lei 8.906/94 organiza-se em 6 títulos. Os mais importantes para a prova:
+
+- **Título I** — Da Advocacia (arts. 1º a 43)
+- **Título II** — Do Processo na OAB (arts. 44 a 76)
+
+## Atividades Privativas (art. 1º)
+
+São atos privativos de advogado:
+**I** — A postulação a órgão do Poder Judiciário e aos juizados especiais
+**II** — Atividades de consultoria, assessoria e direção jurídicas
+
+⚡ FGV cobra muito: a postulação em causa própria (sem advogado) é admitida em casos excepcionais, especialmente:
+
+- Habeas corpus (art. 654 CPP)
+- Ações nos Juizados Especiais (até 20 SM, Lei 9.099/95)
+- Justiça do Trabalho (jus postulandi - art. 791 CLT)
+
+## Inscrição na OAB (art. 8º)
+
+Requisitos cumulativos:
+
+1. Capacidade civil
+1. Diploma de bacharel em Direito (curso reconhecido pelo MEC)
+1. Aprovação em Exame de Ordem
+1. Não exercer atividade incompatível
+1. Idoneidade moral
+1. Prestação do compromisso solene
+
+## Estagiário (art. 9º)
+
+A simples colação de grau permite inscrição como estagiário (não como advogado).
+
+**Pode praticar isoladamente (art. 29 §1º):**
+
+- Retirar e devolver autos
+- Obter cópias e certidões
+- Apresentar peças simples
+- Acompanhar advogado em audiências
+
+**NÃO pode:**
+
+- Sustentação oral
+- Atos privativos sem orientação
+- Advogar em causa própria
+
+> ⚠️ Estagiário sem inscrição como advogado NÃO pode assinar petição que não seja em conjunto com advogado.
+> `    },     {       id: 'et02',       titulo: '2. Sigilo profissional — análise completa',       conteudo:`
+
+# Sigilo Profissional do Advogado
+
+## Fundamento legal
+
+**Art. 7º, XIX EOAB:** “É direito do advogado recusar-se a depor como testemunha em processo no qual funcionou ou deva funcionar, ou sobre fato relacionado a pessoa de quem seja ou foi advogado, mesmo quando autorizado ou solicitado pelo constituinte.”
+
+**Art. 34, VII EOAB:** “Constitui infração disciplinar violar, sem justa causa, sigilo profissional.”
+
+**Art. 25 e 27 do CED** desenvolvem o tema.
+
+## Características essenciais
+
+### 1. É DIREITO E DEVER do advogado
+
+- **Direito**: pode invocar para se recusar a depor
+- **Dever**: não pode revelar mesmo que queira
+
+### 2. É praticamente ABSOLUTO
+
+Persiste mesmo:
+
+- Após o término do mandato
+- Após a morte do cliente
+- Diante de pedido do MP, juiz ou polícia
+- Mesmo quando o cliente AUTORIZA a revelação
+
+### 3. PERTENCE AO CLIENTE
+
+O sigilo NÃO é privilégio do advogado — é proteção do cliente. Por isso, mesmo o cliente autorizando, o advogado deve julgar conforme o melhor interesse do cliente.
+
+## Exceções pontuais
+
+### 1. Autodefesa (art. 25 §único CED)
+
+“Presume-se grave ameaça a fato concreto, ofensiva à honra ou à liberdade do advogado, em razão da qual ele poderá revelar, em sua defesa, fatos cobertos pelo sigilo profissional.”
+
+**Apenas para defesa contra:**
+
+- Acusação do próprio cliente
+- Investigação criminal contra o advogado
+- Processo disciplinar
+
+### 2. Grave ameaça a direito fundamental de terceiro
+
+Excepcionalíssimo. Pode-se sustentar em casos extremos (ex: crime futuro grave contra terceiro).
+
+## Casos práticos FGV
+
+> **Caso 1:** Cliente confessa outros crimes ao advogado.
+> **Resposta:** NÃO pode revelar. Sigilo absoluto.
+
+> **Caso 2:** Juiz determina que o advogado deponha sobre fato do cliente.
+> **Resposta:** Advogado RECUSA-SE a depor (art. 7º, XIX EOAB).
+
+> **Caso 3:** MP requisita documentos do escritório.
+> **Resposta:** Apenas com mandado judicial específico. Inviolabilidade do escritório (art. 7º, II EOAB).
+
+> **Caso 4:** Cliente autoriza revelação de fatos.
+> **Resposta:** Advogado julga: se prejudicar cliente, mantém sigilo mesmo com autorização.
+
+⚡ **Padrão FGV:** Em 9/10 questões sobre sigilo, a resposta correta é “NÃO PODE REVELAR”.
+
+## Jurisprudência
+
+**STJ:** Advogado pode usar sigilo para se proteger em ação trabalhista contra o cliente.
+**STF:** Inviolabilidade do escritório protege também as comunicações com clientes.
+**Súm. 14 STJ:** Honorários têm natureza alimentar — relacionado a sigilo das comunicações sobre honorários.
+`}, { id: 'et03', titulo: '3. Honorários advocatícios — todas as modalidades', conteudo:`
+
+# Honorários Advocatícios
+
+## Espécies
+
+### 1. CONTRATUAIS (Convencionais)
+
+- Acordados entre advogado e cliente
+- Forma escrita recomendada
+- Podem ser fixos, percentuais, mistos
+- Pagos pelo cliente
+
+### 2. SUCUMBENCIAIS
+
+- Fixados pelo juiz na sentença
+- **Pertencem ao ADVOGADO** (art. 24 §1º EOAB)
+- Pagos pela parte vencida
+- Têm natureza alimentar (Súm. 478 STJ)
+
+### 3. ARBITRADOS
+
+- Fixados judicialmente quando não há contrato
+- Em ações de arbitramento
+
+## Honorários de Sucumbência — Regras Cruciais
+
+### Pertencem ao Advogado (art. 24 EOAB)
+
+- Cliente NÃO pode renunciar, transacionar ou compensar sem anuência
+- Advogado pode executar a sentença em nome próprio
+- Direito autônomo
+
+### Limites no CPC (art. 85 §2º)
+
+**10% a 20%** sobre:
+
+- Valor da condenação (regra geral)
+- Proveito econômico obtido
+- Valor atualizado da causa (subsidiariamente)
+
+### Critérios de fixação (art. 85 §2º CPC)
+
+- Grau de zelo profissional
+- Lugar de prestação do serviço
+- Natureza e importância da causa
+- Trabalho realizado e tempo exigido
+
+### Honorários contra Fazenda Pública (art. 85 §3º CPC)
+
+**Sistema escalonado decrescente:**
+
+|Faixa            |Percentual|
+|-----------------|----------|
+|Até 200 SM       |10-20%    |
+|200-2.000 SM     |8-10%     |
+|2.000-20.000 SM  |5-8%      |
+|20.000-100.000 SM|3-5%      |
+|Acima 100.000 SM |1-3%      |
+
+## Quando o cliente não paga
+
+### O advogado PODE:
+
+1. **Renunciar** ao mandato (com aviso de 10 dias - art. 5º §3º CED)
+1. **Cobrar judicialmente** via execução (art. 784, V CPC)
+1. **Inserir cláusulas** de cobrança e juros
+
+### NÃO pode:
+
+- Abandonar caso sem aviso prévio
+- **Reter peças processuais** (vedação ética e Súm. 437 STJ)
+- Compensar honorários com bens do cliente sem ordem judicial
+
+## Quota Litis (art. 38 CED)
+
+- **Permitida** no Brasil
+- Deve ter cláusula de pagamento mínimo se houver insucesso
+- Não pode ultrapassar 50% do valor da causa
+- Vedada partilha de honorários com não-advogados (art. 39 CED)
+
+## Casos práticos FGV
+
+> **Padrão 1:** Cliente quer fazer acordo abrindo mão dos honorários sucumbenciais.
+> **Resposta:** NÃO PODE sem anuência. Honorários sucumbenciais pertencem ao advogado.
+
+> **Padrão 2:** Honorários por pro bono (gratuito).
+> **Resposta:** Advogado PODE receber sucumbência mesmo trabalhando pro bono.
+
+> **Padrão 3:** Compensação de honorários após NCPC.
+> **Resposta:** NÃO se compensam. Cada parte paga proporcionalmente (art. 86 CPC).
+
+> **Padrão 4:** Honorários após renúncia.
+> **Resposta:** NÃO perde. Tem direito a honorários proporcionais ao trabalho.
+
+## Súmulas relevantes
+
+- **Súm. 14 STJ**: Honorários atualizam-se a partir do ajuizamento.
+- **Súm. 478 STJ**: Honorários têm natureza alimentar.
+- **Súm. 437 STJ**: Advogado NÃO pode reter autos pelos honorários.
+- **Súm. 633 STJ**: Lei 1060/50 pode ser invocada por PJ comprovando hipossuficiência.
+  `}, { id: 'et04', titulo: '4. Incompatibilidades e Impedimentos (arts. 28-30 EOAB)', conteudo:`
+
+# Incompatibilidades x Impedimentos
+
+## Diferença Fundamental
+
+|         |INCOMPATIBILIDADE                               |IMPEDIMENTO                              |
+|---------|------------------------------------------------|-----------------------------------------|
+|Conceito |Proibição **TOTAL** de exercer                  |Proibição **PARCIAL** (em algumas causas)|
+|Inscrição|Não pode se inscrever ou tem inscrição cancelada|Pode se inscrever com restrições         |
+|Artigo   |Art. 28 EOAB                                    |Art. 30 EOAB                             |
+
+## INCOMPATIBILIDADES (art. 28)
+
+São TOTAIS — não podem advogar de forma alguma:
+
+**I** — Chefes do Poder Executivo e membros da Mesa do Legislativo (Federal, Estadual, Municipal)
+**II** — Membros do Poder Judiciário e do Ministério Público
+**III** — Ocupantes de cargos de DIREÇÃO em órgãos da Administração Direta, Indireta ou Fundacional
+**IV** — Ocupantes de cargos vinculados ao Judiciário ou MP
+**V** — Ocupantes de funções na Justiça Eleitoral
+**VI** — **Militares de qualquer natureza, na ATIVA**
+**VII** — Ocupantes de cargos de **lançamento, arrecadação ou fiscalização de tributos** (auditores fiscais, etc.)
+**VIII** — Ocupantes de cargos de DIREÇÃO em instituições financeiras
+
+### Detalhes que a FGV cobra:
+
+- **Vereador**: incompatível na Câmara da qual faz parte (mesa) — pode advogar fora dela
+- **Juiz aposentado**: pode advogar (não é mais magistrado em atividade)
+- **Promotor aposentado**: pode advogar
+- **Servidor público em geral**: NÃO é incompatibilidade, é IMPEDIMENTO
+
+## IMPEDIMENTOS (art. 30 EOAB)
+
+Pode advogar, mas NÃO em certas causas:
+
+**I** — **Servidores** da administração direta, indireta e fundacional, contra a Fazenda Pública que os remunere
+**II** — Membros do Poder **Legislativo**, contra ou a favor de PJs de direito público vinculadas
+
+### Exemplos práticos:
+
+- **Servidor federal**: pode advogar, mas não contra União, autarquias federais
+- **Servidor municipal**: pode advogar, mas não contra Município
+- **Vereador**: pode advogar, mas não contra a Câmara, Prefeitura, suas autarquias
+
+## Casos FGV recorrentes
+
+> **Defensor Público pode advogar?** NÃO (incompatibilidade — função vinculada à Justiça)
+> **Conselheiro do Tribunal de Contas?** Incompatível
+> **Tabelião / Registrador?** Incompatível (vinculado ao Judiciário)
+> **Auditor fiscal?** Incompatível (fiscalização de tributos)
+> **Procurador do Estado?** Pode advogar privadamente, com impedimento contra o Estado
+> **Bombeiro militar reformado?** Pode advogar (reforma ≠ ativa)
+> **Senador?** Incompatível (mesa do Legislativo)
+> **Servidor da PGE em férias?** Mesmo em férias, mantém incompatibilidade
+
+⚡ **DICA FGV:** Cargo ATIVO + função judiciária/MP/militar/fiscalização = INCOMPATIBILIDADE.
+Cargo aposentado/inativo geralmente cessa.
+`}, { id: 'et05', titulo: '5. Mandato e procuração — substabelecimento e renúncia', conteudo:`
+
+# Mandato Judicial e Procuração
+
+## Conceitos
+
+**Mandato:** contrato pelo qual alguém (mandatário) recebe poderes para agir em nome de outrem (mandante).
+
+**Procuração:** instrumento que materializa o mandato.
+
+## Forma da procuração
+
+Pode ser:
+
+- **Pública** (lavrada em cartório)
+- **Particular** (escrita pelo outorgante)
+- **Apud acta** (lavrada nos autos)
+- **Eletrônica** (com certificação digital)
+
+## Cláusula geral (art. 105 CPC)
+
+A procuração outorga poderes para o foro em geral, autorizando o advogado a praticar todos os atos do processo, EXCETO:
+
+- Receber citação
+- Confessar
+- Reconhecer procedência do pedido
+- Transigir
+- Desistir
+- Renunciar ao direito
+- Receber e dar quitação
+- Firmar compromisso
+- Assinar declaração de hipossuficiência
+
+⚡ Para esses atos especiais, é necessária procuração com **PODERES ESPECIAIS** ou **POR INSTRUMENTO PÚBLICO**.
+
+## Substabelecimento
+
+### COM reservas
+
+- Advogado original MANTÉM os poderes
+- Substabelecido também pode atuar
+- Modalidade preferida (mais comum)
+
+### SEM reservas
+
+- Advogado original PERDE os poderes
+- Apenas o substabelecido continua atuando
+- Equivale a renúncia parcial
+
+### Anuência do cliente (art. 26 CED)
+
+“O advogado deverá comunicar ao cliente, de forma cabal, qualquer fato relacionado ao patrocínio que lhe foi confiado, em especial os relativos a substabelecimento.”
+
+⚠️ Substabelecimento sem reservas geralmente requer anuência do cliente.
+
+## Renúncia ao mandato
+
+### Forma (art. 5º §3º CED)
+
+1. Comunicar o cliente por escrito
+1. Aguardar **10 dias** para que o cliente nomeie outro advogado
+1. Apenas após esse prazo cessam as obrigações
+1. Comunicar o juízo
+
+### Hipóteses legítimas:
+
+- Inadimplência do cliente
+- Conflito de interesses superveniente
+- Quebra de confiança
+- Cliente exige conduta antiética
+
+### Vedações:
+
+- Renunciar em momento prejudicial (véspera de prazo)
+- Renunciar para se desvincular após erro grave
+- Sem aviso de 10 dias
+
+## Revogação pelo cliente
+
+A qualquer tempo, sem necessidade de justificar.
+Mas advogado tem direito a honorários proporcionais.
+Junção de nova procuração nos autos = revogação tácita.
+
+## Casos FGV
+
+> **Cliente quer transigir, procuração só tem cláusula geral.**
+> Advogado NÃO pode transigir sem poder especial.
+
+> **Substabelecimento sem comunicar cliente.**
+> Infração ética (art. 26 CED).
+
+> **Renúncia em véspera de audiência.**
+> Deve completar os 10 dias E garantir que cliente não seja prejudicado.
+
+> **Cliente revoga mandato sem motivo.**
+> Pode (direito do cliente). Advogado tem direito a honorários proporcionais.
+
+## Súmulas
+
+- **Súm. 115 STJ**: “Na instância especial é inexistente recurso interposto por advogado sem procuração nos autos.”
+  `}, { id: 'et06', titulo: '6. Sociedades de Advogados', conteudo:`
+
+# Sociedades de Advogados (arts. 15-17 EOAB)
+
+## Natureza jurídica
+
+Sociedade SIMPLES (não empresarial), regida por:
+
+- Estatuto da OAB (arts. 15-17)
+- Provimento 169/2015 do CFOAB
+- Subsidiariamente, pelo Código Civil
+
+## Tipos permitidos
+
+### 1. Pluripessoal
+
+- 2 ou mais advogados
+- Registro obrigatório no Conselho Seccional
+
+### 2. Unipessoal de Advocacia
+
+- 1 único advogado titular
+- Limitação de responsabilidade
+- CNPJ próprio
+- Patrimônio separado do pessoal
+
+## Características importantes
+
+### Quem pode integrar
+
+- **APENAS ADVOGADOS** podem ser sócios
+- VEDADA participação de não-advogados
+
+### Atividades permitidas
+
+- Advocacia
+- Consultoria jurídica
+- NÃO pode ter atividade incompatível
+
+### Razão social
+
+DEVE usar OBRIGATORIAMENTE nome de pelo menos um sócio:
+
+- “[Nome] Advocacia”
+- “[Nome 1] e [Nome 2] Sociedade de Advogados”
+- “[Nome] Sociedade Individual de Advocacia”
+
+## Vedações
+
+### NÃO pode:
+
+1. Sócio também ser empregado de outra sociedade de advogados
+1. Razão social com nome fantasia comercial
+1. Apresentar-se como “escritório”, “firma”, “empresa”
+1. Sociedade entre advogado e estagiário
+1. Filial em outro Estado sem registro local
+1. Sócios não-advogados
+
+### Responsabilidade dos sócios (art. 17 EOAB)
+
+“Além da sociedade, o sócio responde **subsidiária** e **ilimitadamente** pelos danos causados aos clientes por ação ou omissão no exercício da advocacia, sem prejuízo da responsabilidade disciplinar em que possa incorrer.”
+
+⚡ Significa:
+
+- **Subsidiária**: primeiro a sociedade, depois o sócio
+- **Ilimitada**: até patrimônio pessoal
+- **Apenas o sócio que causou o dano** (não os outros)
+
+### Honorários da sociedade
+
+Pertencem à sociedade. Distribuídos conforme contrato social. Sócio não pode receber em nome próprio.
+
+## Casos FGV
+
+> **Sociedade entre advogado e contador?** PROIBIDO. Apenas advogados.
+> **Razão social “ABC Consultoria Jurídica Ltda”?** PROIBIDO. Tem que ter nome de sócio.
+> **Sócio responsável pelos atos do colega?** NÃO. Cada um responde por seus atos.
+> **Filial em outro Estado?** SIM, com registro na seccional local.
+> `    },     {       id: 'et07',       titulo: '7. Publicidade na advocacia',       conteudo:`
+
+# Publicidade na Advocacia
+
+## Princípio geral (art. 39 CED)
+
+“A publicidade profissional do advogado tem caráter meramente informativo e deve primar pela discrição e sobriedade, não podendo configurar captação de clientela ou mercantilização da profissão.”
+
+## O que PODE (CED arts. 40-41)
+
+### Anúncios podem conter:
+
+- Nome do advogado e sociedade
+- Número de inscrição na OAB
+- Áreas de atuação
+- Endereço, e-mail, telefone, redes sociais
+- Horário de atendimento
+- Idiomas
+- Títulos acadêmicos
+- Currículo objetivo
+
+### Pode usar:
+
+- Site próprio
+- Redes sociais (com cuidado)
+- Cartões de visita
+- Placa no escritório
+- Listas telefônicas
+- Diretórios profissionais
+
+## O que NÃO PODE (art. 42 CED)
+
+VEDADO:
+**I** — Outdoors, busdoors, anúncios em rádio, TV
+**II** — Correspondência ou mensagem em massa não solicitada
+**III** — Distribuição de panfletos
+**IV** — Anúncios com foto, montagem, símbolos
+**V** — Promessa de resultados
+**VI** — Comparação com outros advogados
+**VII** — Menção a clientes nominais
+**VIII** — Anúncios de serviço com preços
+**IX** — Captação direta ou indireta
+**X** — Uso de termos como “especialista”, “expert” (salvo títulos reconhecidos)
+**XI** — Publicidade conjunta com profissionais de outras áreas
+
+## Redes sociais (Provimento 205/2021)
+
+### Permitido:
+
+- Postagens informativas (artigos, dicas jurídicas)
+- Links para artigos próprios
+- Anúncios profissionais discretos
+
+### Vedado:
+
+- “Casos de sucesso”
+- “Vitórias” do escritório
+- Imagens de processos
+- Captação direta (“Quer abrir empresa? Fale conosco”)
+
+## Casos FGV
+
+> **Outdoor com nome do escritório?** VEDADO (art. 42, I).
+> **Mensagem WhatsApp em massa?** VEDADO. Captação.
+> **“Primeira consulta gratuita por R$0”?** VEDADO. Mercantilização.
+> **Site com cases de sucesso e nome de cliente?** VEDADO. Quebra sigilo + propaganda.
+> **Camiseta com logo em corrida?** Permitido se discreto.
+> **Mala direta dos Correios?** VEDADO se em massa.
+
+⚡ **DICA FGV:** Sempre que houver “promessa”, “resultado garantido”, “primeiro lugar”, “líder”, “número 1”, “comparação” → VEDADO.
+`}, { id: 'et08', titulo: '8. Processo disciplinar e sanções', conteudo:`
+
+# Processo Disciplinar OAB
+
+## Infrações (art. 34 EOAB) — 29 incisos
+
+Mais cobrados pela FGV:
+
+**I** — Exercer profissão impedido/incompatibilizado
+**III** — Valer-se de agenciador
+**IV** — Angariar ou captar causas
+**VII** — Violar sigilo profissional
+**XII** — Recusar-se a prestar contas ao cliente
+**XIV** — Lesar fraudulentamente direito do cliente
+**XV** — Abandonar a causa sem justo motivo
+**XVI** — Deixar de cumprir prazo, em prejuízo da parte
+**XX** — Publicar alegações forenses na imprensa
+**XXIII** — Praticar advocacia administrativa em órgão público
+
+## Sanções (art. 35) — em ordem crescente
+
+|Sanção       |Quando                    |Características                             |
+|-------------|--------------------------|--------------------------------------------|
+|**CENSURA**  |Infrações leves           |Pode ser convertida em advertência reservada|
+|**SUSPENSÃO**|Infrações graves          |30 dias a 12 meses                          |
+|**EXCLUSÃO** |Gravíssimas (3 suspensões)|Cancela inscrição                           |
+|**MULTA**    |Cumulativa                |Pode ser aplicada com qualquer outra        |
+
+## Aplicação
+
+### CENSURA (art. 36)
+
+- Aplicável a infrações dos incisos I a XVI, XXIX
+- Quando circunstâncias justificarem leniência
+- Pode ser convertida em advertência reservada (sigilo)
+
+### SUSPENSÃO (art. 37)
+
+- Incisos XVII a XXV
+- Reincidência em condutas que ensejam censura
+- Inadimplência prolongada com a OAB
+- 30 dias a 12 meses
+- Acarreta IMPEDIMENTO de exercer a advocacia
+
+### EXCLUSÃO (art. 38)
+
+- Aplicação de **3 suspensões**
+- Infração ao art. 34, XXVI a XXVIII
+- Tornar-se moralmente inidôneo
+- Crime infamante
+
+## Prescrição (art. 43)
+
+- **5 anos** da data da infração
+- Interrompe-se com:
+1. Instauração do processo
+1. Decisão condenatória recorrível
+- **3 anos** desde o último ato (prescrição intercorrente)
+
+## Procedimento
+
+### Fases:
+
+1. **Representação** (qualquer pessoa pode representar)
+1. **Despacho** do Presidente do Tribunal de Ética
+1. **Defesa Prévia** (15 dias)
+1. **Instrução** (provas, oitivas)
+1. **Razões finais** (15 dias)
+1. **Julgamento** pelo Tribunal de Ética e Disciplina
+1. **Recurso** ao Conselho Seccional / Federal
+
+### Direito ao contraditório
+
+- Garantido em todas as fases
+- Citação pessoal ou postal
+- Pode constituir advogado (sim, advogado pode ter advogado)
+
+## Casos FGV
+
+> **Faltou audiência sem justificativa, prejudicou cliente.**
+> Censura ou suspensão (incisos XVI e XV).
+
+> **Captou cliente em hospital.**
+> Suspensão (inciso IV).
+
+> **Inadimplência com OAB por 3 anos.**
+> Suspensão.
+
+> **Recebe 4ª suspensão.**
+> EXCLUSÃO automática.
+
+> **Cliente quer ressarcimento + processo disciplinar.**
+> São independentes. Pode haver os dois.
+
+⚡ **CRUCIAL FGV:** Censura → Suspensão → Exclusão. Multa pode ser cumulada.
+`
+}
+]
+},
+
+// ─────────────────────────────────────────────────────────────
+// CONSTITUCIONAL
+// ─────────────────────────────────────────────────────────────
+constitucional: {
+topicos: [
+{
+id: ‘co01’,
+titulo: ‘1. Princípios fundamentais (arts. 1º a 4º)’,
+conteudo: `
+
+# Princípios Fundamentais da CF/88
+
+## Art. 1º — Fundamentos da República
+
+A República Federativa do Brasil constitui-se em **Estado Democrático de Direito** e tem como FUNDAMENTOS:
+
+**I** — Soberania
+**II** — Cidadania
+**III** — Dignidade da Pessoa Humana
+**IV** — Valores sociais do trabalho e da livre iniciativa
+**V** — Pluralismo político
+
+⚡ MNEMÔNICO: **SO-CI-DI-VA-PLU**
+
+### Parágrafo Único
+
+“Todo o poder emana do POVO, que o exerce por meio de representantes eleitos ou diretamente.”
+
+- Democracia REPRESENTATIVA (regra)
+- Democracia DIRETA (exceção): plebiscito, referendo, iniciativa popular
+
+## Art. 2º — Separação dos Poderes
+
+“São Poderes da União, **independentes e harmônicos** entre si, o Legislativo, o Executivo e o Judiciário.”
+
+A separação de poderes é **cláusula pétrea** (art. 60, §4º, III).
+
+## Art. 3º — Objetivos Fundamentais
+
+**I** — Construir sociedade livre, justa e solidária
+**II** — Garantir desenvolvimento nacional
+**III** — Erradicar pobreza e marginalização
+**IV** — Promover o bem de todos sem preconceitos
+
+⚡ DIFERENÇA CRUCIAL:
+
+- **Art. 1º** = FUNDAMENTOS (o que é)
+- **Art. 3º** = OBJETIVOS (o que se quer)
+
+## Art. 4º — Princípios das Relações Internacionais
+
+10 princípios. Os mais cobrados:
+**II** — Prevalência dos direitos humanos
+**VIII** — Repúdio ao terrorismo e ao racismo
+**X** — Concessão de asilo político
+
+### Parágrafo Único
+
+“Buscará a integração econômica, política, social e cultural dos povos da América Latina.”
+
+## Princípio da Dignidade da Pessoa Humana
+
+### Características
+
+- Núcleo de todos os direitos fundamentais
+- Pilar do Estado Democrático de Direito
+- Vincula Estado E particulares (eficácia horizontal)
+- Cláusula geral de proteção
+
+### Aplicações jurisprudenciais (STF)
+
+- Vedação à pena cruel
+- Garantia do mínimo existencial
+- Direito ao nome social (transexuais)
+- Casamento homoafetivo (ADPF 132 e ADI 4277)
+
+## Casos FGV
+
+> **Diferença Fundamentos x Objetivos:**
+> Art. 1º (SO-CI-DI-VA-PLU) é o QUE somos.
+> Art. 3º é o QUE QUEREMOS.
+
+> **Cláusula pétrea:**
+> Separação de Poderes (art. 60 §4º III) — não pode ser abolida nem por EC.
+> `    },     {       id: 'co02',       titulo: '2. Direitos e Garantias Fundamentais (art. 5º) — Visão Completa',       conteudo:`
+
+# Art. 5º CF/88 — Direitos e Garantias Fundamentais
+
+## Caput — Princípio da Igualdade
+
+“Todos são iguais perante a lei, sem distinção de qualquer natureza, garantindo-se aos brasileiros e aos estrangeiros residentes no País a inviolabilidade do direito à vida, à liberdade, à igualdade, à segurança e à propriedade.”
+
+### Igualdade Formal vs. Material
+
+- **Formal**: tratamento igual perante a lei
+- **Material**: tratar desiguais desigualmente, na medida da desigualdade
+
+## Incisos mais cobrados pela FGV
+
+### I — Igualdade entre homens e mulheres
+
+### II — Princípio da Legalidade
+
+“Ninguém será obrigado a fazer ou deixar de fazer alguma coisa senão em virtude de lei”
+
+### III — Tortura
+
+**Crime inafiançável e imprescritível** (relacionado ao XLIII).
+
+### IV — Liberdade de expressão (vedado anonimato)
+
+### V — Direito de resposta proporcional
+
+### VI — Liberdade de crença
+
+### IX — Liberdade cultural sem censura
+
+### X — Privacidade
+
+“São invioláveis a intimidade, a vida privada, a honra e a imagem das pessoas, assegurado o direito a indenização pelo dano material ou moral decorrente de sua violação”
+
+⚡ PJs também têm direito à honra (objetiva) — Súm. 227 STJ.
+
+### XI — Inviolabilidade Domiciliar
+
+“A casa é asilo inviolável do indivíduo, ninguém nela podendo penetrar sem consentimento do morador, salvo:
+
+- Em caso de **flagrante delito** ou **desastre**
+- Para **prestar socorro**
+- Ou, durante o dia, **por determinação judicial**”
+
+⚡ À NOITE: SOMENTE por flagrante, desastre ou socorro. Nem com mandado!
+
+### XII — Sigilo de comunicações
+
+Apenas a interceptação **TELEFÔNICA** pode ser autorizada judicialmente para fins criminais.
+
+### XIII — Liberdade profissional
+
+“Atendidas as qualificações profissionais que a lei estabelecer”
+
+### XV — Liberdade de locomoção em tempo de paz
+
+### XXII e XXIII — Propriedade e função social
+
+### XXIV — Desapropriação por necessidade/utilidade pública/interesse social
+
+### XXXIII — Direito à informação dos órgãos públicos
+
+### XXXV — Inafastabilidade
+
+“A lei não excluirá da apreciação do Poder Judiciário lesão ou ameaça a direito”
+
+### XXXVI — Segurança jurídica
+
+Direito adquirido, ato jurídico perfeito, coisa julgada.
+
+### XXXIX — Legalidade Penal
+
+“Não há crime sem lei anterior que o defina, nem pena sem prévia cominação legal”
+
+### XL — Irretroatividade da lei penal (salvo benéfica)
+
+### XLII — Racismo: inafiançável e imprescritível
+
+### XLIII — Crimes hediondos
+
+“Inafiançáveis e insuscetíveis de graça ou anistia: tortura, tráfico, terrorismo, hediondos”
+
+### XLIV — Grupos armados contra ordem constitucional: inafiançável e imprescritível
+
+### XLV — Pessoalidade da pena
+
+### LIV — Devido processo legal
+
+### LV — Contraditório e ampla defesa
+
+“Aos litigantes, em processo judicial ou administrativo, e aos acusados em geral”
+
+### LVI — Provas ilícitas inadmissíveis
+
+### LVII — Presunção de inocência
+
+“Até o trânsito em julgado de sentença penal condenatória”
+
+### LXVI — Liberdade provisória
+
+### LXXIV — Assistência jurídica gratuita aos hipossuficientes
+
+### LXXVIII — Razoável duração do processo
+
+## §§ do art. 5º
+
+### §1º — Aplicação imediata
+
+“As normas definidoras dos direitos e garantias fundamentais têm aplicação imediata”
+
+### §2º — Rol aberto
+
+Direitos NÃO são taxativos.
+
+### §3º — Tratados internacionais com status de EC
+
+Aprovados em cada Casa, dois turnos, 3/5 dos votos.
+
+### §4º — TPI
+
+“O Brasil se submete à jurisdição do Tribunal Penal Internacional”
+
+⚡ DICA FGV: Decore as **garantias fundamentais penais** (LIV a LXVIII) — caem demais!
+`
+}
+]
+},
+
+// Demais matérias usam IA
+civil: { topicos: [] },
+‘proc-civil’: { topicos: [] },
+penal: { topicos: [] },
+‘proc-penal’: { topicos: [] },
+trabalho: { topicos: [] },
+‘proc-trab’: { topicos: [] },
+empresarial: { topicos: [] },
+tributario: { topicos: [] },
+administrativo: { topicos: [] },
+consumidor: { topicos: [] },
+humanos: { topicos: [] },
+ambiental: { topicos: [] },
+eca: { topicos: [] },
+filosofia: { topicos: [] },
+
+};
